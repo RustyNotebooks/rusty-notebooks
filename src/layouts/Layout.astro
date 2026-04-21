@@ -1,0 +1,190 @@
+---
+const { title = "Rusty Notebooks" } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <style is:global>
+      :root {
+        --bg: #111111;
+        --bg-soft: #1a1a1a;
+        --text: #f2efe8;
+        --muted: #b7aea3;
+        --accent: #c47a3a;
+        --border: #2b2b2b;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Georgia, "Times New Roman", serif;
+        line-height: 1.6;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 48px 20px 80px;
+      }
+
+      .hero {
+        padding: 48px 0 32px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 40px;
+      }
+
+      .eyebrow {
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.8rem;
+        margin-bottom: 12px;
+      }
+
+      h1, h2, h3 {
+        line-height: 1.2;
+        margin-top: 0;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 16px;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+        margin-bottom: 16px;
+      }
+
+      p {
+        margin: 0 0 16px;
+        color: var(--text);
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+      }
+
+      .card {
+        display: block;
+        padding: 20px;
+        background: var(--bg-soft);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        transition: transform 0.15s ease, border-color 0.15s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent);
+        text-decoration: none;
+      }
+
+      .card-title {
+        font-size: 1.15rem;
+        margin-bottom: 8px;
+        color: var(--text);
+      }
+
+      .section {
+        margin-top: 40px;
+      }
+      .platform-button {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 14px 20px;
+  border-radius: 999px;
+
+  font-weight: 600;
+  font-size: 1rem;
+
+  text-decoration: none;
+
+  background: #e7e3dc;
+  color: #111;
+
+  transition: all 0.2s ease;
+}
+
+.platform-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* YouTube spezifisch */
+.platform-button.youtube svg {
+  background: #ff0000;
+  border-radius: 8px;
+  padding: 4px;
+}
+.platform-button.youtube {
+  background: #f2d6d6;
+  color: #111;
+}
+.platform-button.spotify {
+  background: #1DB954;
+  color: #111;
+}
+
+.platform-button.spotify svg {
+  background: none;
+  padding: 0;
+}
+
+.chapter-bg {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+.chapter-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+    var(--bg-image, url("/images/chapter1.png")) center/cover no-repeat;
+
+  z-index: -1;
+}
+
+.chapter-content {
+  position: relative;
+  z-index: 1;
+}
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <slot />
+    </main>
+  </body>
+</html>
+
+
