@@ -1,11 +1,10 @@
 ---
 import PlatformButton from "./PlatformButton.astro";
 
-const { title = "Listen", links = [] } = Astro.props;
+const { links = [] } = Astro.props;
 ---
 
 <section class="section">
-  <h2>{title}</h2>
 
   <div class="listen-row">
     {links.map((link: { href: unknown; label: unknown; type: unknown; }) => (
@@ -14,6 +13,7 @@ const { title = "Listen", links = [] } = Astro.props;
           href={link.href}
           label={link.label}
           type={link.type}
+          variant="tag"
         />
       </Fragment>
     ))}

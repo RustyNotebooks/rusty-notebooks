@@ -1,12 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ChapterListSection from "../components/ChapterListSection.astro";
+import PlatformButton from "../components/PlatformButton.astro";
 ---
 
 <Layout title="Rusty Notebooks">
   <div class="chapter-bg" style="--bg-image: url('/images/index.png');">
-<div class="chapter-content">
+<div class="chapter-content container">
   <section class="hero">
+      <img
+    src="/images/rusty-badge.png"
+    alt=""
+    class="hero-badge-right"
+  />
     <div class="eyebrow">Americana Storytelling in Songs</div>
     <h1>Rusty Notebooks</h1>
     <div class="narrative">
@@ -31,6 +37,43 @@ import ChapterListSection from "../components/ChapterListSection.astro";
   </p>
 </div>
   </section>
+
+<div class="tag-row">
+  <PlatformButton
+    href="https://open.spotify.com/intl-de/artist/0jMtkiMsFVq3C0P3z7AgGh?si=jZQsAIhYT92yleGrw5T1mw"
+    label="Listen"
+    type="spotify"
+    variant="tag"
+  />
+
+<PlatformButton
+  href="https://music.apple.com/us/artist/rusty-notebooks/1876510481"
+  label="Listen"
+  type="applemusic"
+  variant="tag"
+/>
+
+  <PlatformButton
+    href="https://www.youtube.com/@RustyNotebooks"
+    label="Watch"
+    type="youtube"
+    variant="tag"
+  />
+
+  <PlatformButton
+    href="https://www.instagram.com/rustynotebooks/"
+    label="Journal"
+    type="instagram"
+    variant="tag"
+  />
+
+  <PlatformButton
+    href="https://www.tiktok.com/@rusty.notebooks"
+    label="Moments"
+    type="tiktok"
+    variant="tag"
+  />
+</div>
 
 <ChapterListSection
   title="Chapters"

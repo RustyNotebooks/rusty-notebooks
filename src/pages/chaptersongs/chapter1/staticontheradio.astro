@@ -9,7 +9,7 @@ import ListenSection from "../../../components/ListenSection.astro";
 
 <Layout title="Static on the Radio — Rusty Notebooks">
 <div class="chapter-bg" style="--bg-image: url('/images/staticontheradio.png');">
-<div class="chapter-content">
+<div class="chapter-content container">
   <Hero eyebrow="Chapter I — Resonance of Rust"
         title="Static on the Radio"
         backHref={"/chapters/chapter1"}/>
@@ -51,15 +51,14 @@ import ListenSection from "../../../components/ListenSection.astro";
       href: "https://open.spotify.com/intl-de/track/0kLkI60wnizjpYaQGUC2SE?si=df1c5e77112c47e0",
       label: "Spotify",
       type: "spotify"
+    },
+    {
+      href: "https://music.apple.com/us/album/static-on-the-radio-single/1878947742",
+      label: "Apple Music",
+      type: "applemusic"
     }
   ]}
 />
-
-<BackButton 
-  href="/chapters/chapter1" 
-  label="Resonance of Rust" 
-/>
-
     </div> <!-- chapter-content -->
 </div> <!-- chapter-bg -->
 </Layout>

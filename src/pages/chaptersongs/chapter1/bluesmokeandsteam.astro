@@ -9,7 +9,7 @@ import ListenSection from "../../../components/ListenSection.astro";
 
 <Layout title="Blue Smoke & Steam — Rusty Notebooks">
 <div class="chapter-bg" style="--bg-image: url('/images/bluesmokeandsteam.png');">
-<div class="chapter-content">
+<div class="chapter-content container">
   <Hero eyebrow="Chapter I — Resonance of Rust"
         title="Blue Smoke & Steam"
         backHref={"/chapters/chapter1"}/>
@@ -58,15 +58,14 @@ import ListenSection from "../../../components/ListenSection.astro";
       href: "https://open.spotify.com/intl-de/track/3VBcGH6F6Aqs38K6LdUfWi?si=ba40a40b35ec47a4",
       label: "Spotify",
       type: "spotify"
+    },
+    {
+      href: "https://music.apple.com/us/album/blue-smoke-steam-single/1876946716",
+      label: "Apple Music",
+      type: "applemusic"
     }
   ]}
 />
-
-<BackButton 
-  href="/chapters/chapter1" 
-  label="Resonance of Rust" 
-/>
-
     </div> <!-- chapter-content -->
 </div> <!-- chapter-bg -->
 </Layout>

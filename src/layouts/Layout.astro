@@ -4,6 +4,7 @@ const { title = "Rusty Notebooks" } = Astro.props;
 
 <html lang="en">
   <head>
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
@@ -129,34 +130,128 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+.platform-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
 .platform-button:hover {
+  text-decoration: none;
+}
+
+/* Standard Button Variant */
+.platform-button.button {
+  padding: 14px 20px;
+  border-radius: 999px;
+
+  font-weight: 600;
+  font-size: 1rem;
+
+  background: #e7e3dc;
+  color: #111;
+}
+
+.platform-button.button:hover {
   transform: translateY(-2px);
   opacity: 0.9;
 }
 
-/* YouTube spezifisch */
-.platform-button.youtube svg {
-  color: #ff0000;   /* 👈 DAS macht das Icon rot */
-  background: none; /* 👈 entfernt roten Kasten */
-  padding: 0;
-
+.platform-button.button svg {
+  width: 28px;
+  height: 28px;
 }
-.platform-button.youtube {
+
+/* YouTube Button */
+.platform-button.button.youtube {
   background: #f2d6d6;
-  text-decoration: none;
   color: #111;
 }
 
-/* Spotify spezifisch */
-.platform-button.spotify {
-  background: #1DB954;
-  text-decoration: none;
-  color: #111;
-}
-.platform-button.spotify svg {
+.platform-button.button.youtube svg {
+  color: #ff0000;
   background: none;
   padding: 0;
 }
+
+/* Spotify Button */
+.platform-button.button.spotify {
+  background: #1db954;
+  color: #111;
+}
+
+.platform-button.button.spotify svg {
+  background: none;
+  padding: 0;
+}
+
+.platform-button.button.applemusic {
+  background: #111;
+  color: #fff;
+}
+
+.platform-button.button.applemusic svg {
+  color: #fff;
+}
+
+/* Instagram + TikTok Buttons */
+.platform-button.button.instagram,
+.platform-button.button.tiktok {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.platform-button.button.instagram svg,
+.platform-button.button.tiktok svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Tag Variant */
+.platform-button.tag {
+  padding: 8px 12px;
+  border-radius: 999px;
+
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.platform-button.tag:hover {
+  background-color: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.platform-button.tag svg {
+  width: 16px;
+  height: 16px;
+  background: none;
+  padding: 0;
+  color: currentColor;
+}
+
+/* Social tags all subtle */
+.platform-button.tag.youtube,
+.platform-button.tag.spotify,
+.platform-button.tag.instagram,
+.platform-button.tag.applemusic,
+.platform-button.tag.tiktok {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
 
 /* Background image */
 .chapter-bg {
@@ -261,9 +356,47 @@ html {
   opacity: 0.9;
 }
 
+.hero {
+  position: relative;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge-right {
+  position: absolute;
+
+  top: 0px;
+  right: 0%;
+
+  width: 220px;
+  height: auto;
+
+  opacity: 0.25;
+
+  pointer-events: none;
+  user-select: none;
+
+  z-index: 0;
+
+  transform: rotate(+6deg);
+  filter: blur(0.3px);
+}
+
 h1 {
   font-size: 3.6rem;
 }
+
+/* TagRow Wrapper */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
 /* VisualizerSection */
 .video-frame {
   position: relative;
@@ -490,13 +623,26 @@ h1 {
   }
 }
 
+@media (max-width: 768px) {
+  .chapter-bg {
+    overflow: hidden;
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+      var(--bg-image, url("/images/chapter1.png")) center/cover no-repeat;
+  }
+
+  .chapter-bg::before {
+    display: none;
+  }
+}
+
     </style>
   </head>
-  <body>
-    <main class="container">
-      <slot />
-    </main>
-  </body>
+<body>
+  <main>
+    <slot />
+  </main>
+</body>
 </html>
 
 
