@@ -125,6 +125,10 @@ const { title = "Rusty Notebooks" } = Astro.props;
   transition: all 0.2s ease;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 .platform-button:hover {
   transform: translateY(-2px);
   opacity: 0.9;
@@ -378,7 +382,7 @@ h1 {
   align-items: center;
   gap: 16px;
 
-  padding: 16px 0;
+  padding: 18px 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
   background: transparent;
@@ -396,9 +400,9 @@ h1 {
 .chapter-thumb {
   width: 80px;
   aspect-ratio: 1 / 1;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  opacity: 0.9;
+  align-self: center;
 }
 
 .chapter-row:hover .chapter-thumb {
@@ -414,6 +418,12 @@ h1 {
 
 .chapter-copy {
   min-width: 0;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.chapter-copy p {
+  margin: 2px 0 0;
 }
 
 .chapter-row-title {
@@ -423,8 +433,63 @@ h1 {
 }
 
 .chapter-copy p {
-  margin: 4px 0 0;
+  margin: 4px 0 0px;
 }
+
+@media (max-width: 768px) {
+  .chapter-row {
+    grid-template-columns: 64px 1fr;
+    align-items: center;
+  }
+
+  .chapter-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .chapter-copy p {
+    margin: 2px 0 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .chapter-copy p {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .chapter-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 12px;
+  }
+
+  .chapter-thumb {
+    flex: 0 0 64px;
+    width: 64px;
+    height: 64px;
+    aspect-ratio: auto;
+  }
+
+  .chapter-copy {
+    flex: 1;
+    min-width: 0;
+    display: block;
+  }
+
+  .chapter-row-title {
+    font-size: 0.95rem;
+    line-height: 1.2;
+  }
+
+  .chapter-copy p {
+    display: none;
+  }
+}
+
     </style>
   </head>
   <body>
