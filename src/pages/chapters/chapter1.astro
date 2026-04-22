@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Hero from "../../components/Hero.astro";
 import TrackListSection from "../../components/TrackListSection.astro";
+import FullAlbumSection from "../../components/FullAlbumSection.astro";
 ---
 
 <Layout title="Chapter 1">
@@ -68,6 +69,84 @@ import TrackListSection from "../../components/TrackListSection.astro";
       number: "06",
       title: "Embers in the Dark",
       href: "/chaptersongs/chapter1/embersinthedark"
+    },
+    {
+      number: "07",
+      title: "Anchor in the Grain",
+      href: "/chaptersongs/chapter1/anchorinthegrain"
+    },
+    {
+      number: "08",
+      title: "Silver & Dust",
+      href: "/chaptersongs/chapter1/embersinsilveranddustthedark"
+    },
+    {
+      number: "09",
+      title: "Amber & Ice",
+      href: "/chaptersongs/chapter1/amberandice"
+    },
+    {
+      number: "10",
+      title: "Half-Speed Horizon",
+      href: "/chaptersongs/chapter1/halfspeedhorizon"
+    },
+    {
+      number: "11",
+      title: "The Humming Heartwood",
+      href: "/chaptersongs/chapter1/thehumminghearwood"
+    },
+    {
+      number: "12",
+      title: "Dust in the Sunbeam",
+      href: "/chaptersongs/chapter1/dustinthesunbeam"
+    },
+    {
+      number: "13",
+      title: "Silver on the Sage",
+      href: "/chaptersongs/chapter1/silveronthesage"
+    },
+    {
+      number: "14",
+      title: "The Cedar and the Stone",
+      href: "/chaptersongs/chapter1/thecedarandthestone"
+    }
+  ]}
+/>
+
+<FullAlbumSection
+  title="Full Album"
+  text="Take the whole journey."
+  links={[
+    {
+      href: "https://open.spotify.com/intl-de/album/07NLVhKKDu9LJI76xubogV?si=jC6s8cQZQgSw2-B7DPlc8g",
+      label: "Spotify",
+      type: "spotify"
+    },
+    {
+      href: "APPLE_LINK",
+      label: "Apple Music",
+      type: "applemusic"
+    },
+    {
+      href: "https://www.youtube.com/watch?v=EHxfPolCpDQ",
+      label: "YouTube",
+      type: "youtube"
+    }
+  ]}
+/>
+
+ <TrackListSection
+  title="Rust of Resonance (Echoes)"
+  songs={[
+    {
+      number: "01",
+      title: "Dust in the Sunbeam (Echoes)",
+      href: "/chaptersongs/chapter1/burnandcedarwood"
+    },
+    {
+      number: "02",
+      title: "Embers in the Dark (Echoes)",
+      href: "/chaptersongs/chapter1/bluesmokeandsteam"
     }
   ]}
 />

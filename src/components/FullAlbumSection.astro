@@ -1,0 +1,28 @@
+---
+import PlatformButton from "./PlatformButton.astro";
+
+const {
+  title = "Full Album",
+  text = null,
+  links = []
+} = Astro.props;
+---
+
+<section class="section section-album">
+  <h2>{title}</h2>
+
+  {text && (
+    <p class="muted album-intro">{text}</p>
+  )}
+
+  <div class="tag-row">
+    {links.map((link: { href: unknown; label: unknown; type: unknown; }) => (
+      <PlatformButton
+        href={link.href}
+        label={link.label}
+        type={link.type}
+        variant="tag"
+      />
+    ))}
+  </div>
+</section>
