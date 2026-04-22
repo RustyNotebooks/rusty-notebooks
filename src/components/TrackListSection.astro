@@ -1,0 +1,18 @@
+---
+const { title = "Songs", songs = [] } = Astro.props;
+---
+
+<section class="section">
+  <h2>{title}</h2>
+
+  <div class="track-list">
+    {songs.map((song: { href: string | URL | null | undefined; number: unknown; title: unknown; }) => (
+      <a class="track-row" href={song.href}>
+        <span class="track-number">{song.number}</span>
+        <div class="track-copy">
+          <div class="track-title">{song.title}</div>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

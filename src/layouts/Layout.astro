@@ -44,12 +44,6 @@ const { title = "Rusty Notebooks" } = Astro.props;
         padding: 48px 20px 80px;
       }
 
-      .hero {
-        padding: 48px 0 32px;
-        border-bottom: 1px solid var(--border);
-        margin-bottom: 40px;
-      }
-
       .eyebrow {
         color: var(--muted);
         text-transform: uppercase;
@@ -138,24 +132,29 @@ const { title = "Rusty Notebooks" } = Astro.props;
 
 /* YouTube spezifisch */
 .platform-button.youtube svg {
-  background: #ff0000;
-  border-radius: 8px;
-  padding: 4px;
+  color: #ff0000;   /* 👈 DAS macht das Icon rot */
+  background: none; /* 👈 entfernt roten Kasten */
+  padding: 0;
+
 }
 .platform-button.youtube {
   background: #f2d6d6;
-  color: #111;
-}
-.platform-button.spotify {
-  background: #1DB954;
+  text-decoration: none;
   color: #111;
 }
 
+/* Spotify spezifisch */
+.platform-button.spotify {
+  background: #1DB954;
+  text-decoration: none;
+  color: #111;
+}
 .platform-button.spotify svg {
   background: none;
   padding: 0;
 }
 
+/* Background image */
 .chapter-bg {
   position: relative;
   min-height: 100vh;
@@ -177,6 +176,254 @@ const { title = "Rusty Notebooks" } = Astro.props;
 .chapter-content {
   position: relative;
   z-index: 1;
+}
+
+/* Back Button style */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 16px;
+  border-radius: 999px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+
+  border: 1px solid var(--border);
+
+  text-decoration: none;
+  font-size: 0.95rem;
+
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateX(-3px);
+  text-decoration: none;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Hero */
+.eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 12px;
+  margin-bottom: 14px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+
+  color: var(--muted);
+  text-decoration: none;
+
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.eyebrow-pill:hover {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.24);
+  background-color: rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+}
+
+.eyebrow-pill-arrow {
+  font-size: 0.8rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.eyebrow-pill:hover .eyebrow-pill-arrow {
+  transform: translateX(-2px);
+}
+
+.eyebrow-pill-label {
+  line-height: 1;
+}
+
+.hero p {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+h1 {
+  font-size: 3.6rem;
+}
+/* VisualizerSection */
+.video-frame {
+  position: relative;
+  padding-top: 56.25%;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Listen Section */
+.listen-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Tracklist Section */
+.track-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+    background: rgba(255,255,255,0.02);
+    padding-left: 8px;
+  border-radius: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.track-row {
+  display: grid;
+  grid-template-columns: 42px 1fr auto;
+  align-items: center;
+  gap: 18px;
+
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: transparent;
+
+  text-decoration: none;
+  transition: background-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.track-row:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  padding-left: 8px;
+  text-decoration: none;
+}
+
+.track-number {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+}
+
+.track-copy {
+  min-width: 0;
+}
+
+.track-copy p {
+  margin: 4px 0 0;
+}
+
+.track-title {
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+
+/* Narrative Section */
+.section-narrative {
+  margin-top: px;
+}
+
+.narrative {
+  max-width: 640px;
+}
+
+.narrative p {
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.narrative-final {
+  margin-top: 32px;
+  color: var(--text);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+/* ChaperList Section */
+.chapter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  background: rgba(255, 255, 255, 0.02); /* 👈 DAS ist der Effekt */
+  border-radius: 12px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-left: 8px; /* 👈 leicht eingerückt wie Tracklist */
+}
+
+.chapter-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;  
+  align-items: center;
+  gap: 16px;
+
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: transparent;
+  text-decoration: none;
+
+  transition: background-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.chapter-row:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  text-decoration: none;
+  padding-left: 8px;
+}
+
+.chapter-thumb {
+  width: 80px;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  opacity: 0.9;
+}
+
+.chapter-row:hover .chapter-thumb {
+  opacity: 1;
+}
+
+.chapter-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.chapter-copy {
+  min-width: 0;
+}
+
+.chapter-row-title {
+  color: var(--text);
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+.chapter-copy p {
+  margin: 4px 0 0;
 }
     </style>
   </head>

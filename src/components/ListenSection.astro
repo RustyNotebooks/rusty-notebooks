@@ -1,0 +1,21 @@
+---
+import PlatformButton from "./PlatformButton.astro";
+
+const { title = "Listen", links = [] } = Astro.props;
+---
+
+<section class="section">
+  <h2>{title}</h2>
+
+  <div class="listen-row">
+    {links.map((link: { href: unknown; label: unknown; type: unknown; }) => (
+      <Fragment>
+        <PlatformButton
+          href={link.href}
+          label={link.label}
+          type={link.type}
+        />
+      </Fragment>
+    ))}
+  </div>
+</section>

@@ -1,36 +1,63 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import BackButton from "../../components/BackButton.astro";
+import Hero from "../../components/Hero.astro";
+import TrackListSection from "../../components/TrackListSection.astro";
 ---
 
 <Layout title="Chapter 1">
 
 <div class="chapter-bg" style="--bg-image: url('/images/template.png');">
 <div class="chapter-content">
-  <section class="hero">
-    <div class="eyebrow">Chapter 1</div>
-    <h1>Resonance of Rust</h1>
+  <Hero eyebrow="Chapter 1"
+        title="Resonance of Rust"
+        backHref="/"/>
+
+<section class="section section-narrative">
+  <div class="narrative">
     <p>
-      Rusty wakes up before the sun rises. The town is quiet,
-      the air still. Nothing has happened yet — but something is about to change.
+      Somewhere between crackling wood, quiet voices, and the silence in between,
+      Resonance of Rust creates a sound that feels less like music — and more like a place.
     </p>
-  </section>
 
-  <section class="section">
-    <h2>Songs</h2>
+    <p>
+      Blending acoustic chill-country, lo-fi folk, and raw Americana, the songs move slowly
+      and deliberately. No big climaxes — just honest, intimate moments that are allowed to breathe.
+    </p>
 
-    <div class="card-grid">
-      <a class="card" href="/songs/quiet-morning">
-        <div class="card-title">Burn & Cedarwood</div>
-        <p class="muted">
-          The first thoughts before the world wakes up.
-        </p>
-      </a>
-    </div>
-  </section>
+    <p>
+      The music circles around time, memory, and coming home — not as a straight line,
+      but as a loop that could be a beginning or an ending.
+    </p>
 
-  <p style="margin-top:40px;">
-    <a href="/">← Back to Home</a>
-  </p>
+    <p class="narrative-final">
+      What remains is a feeling:<br />
+      You’re exactly where you’re supposed to be.
+    </p>
+  </div>
+</section>
+
+ <TrackListSection
+  title="Songs"
+  songs={[
+    {
+      number: "01",
+      title: "Burn & Cedarwood",
+      href: "/chaptersongs/chapter1/burnandcedarwood"
+    },
+    {
+      number: "02",
+      title: "Blue Smoke & Steam",
+      href: "/chaptersongs/chapter1/bluesmokeandsteam"
+    },
+    {
+      number: "03",
+      title: "Static on the Radio",
+      href: "/chaptersongs/chapter1/staticontheradio"
+    }
+  ]}
+/>
+
   </div> <!-- chapter-content -->
 </div> <!-- chapter-bg -->
 </Layout>

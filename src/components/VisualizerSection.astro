@@ -1,0 +1,17 @@
+---
+const { title = "Official Visualizer", youtubeId } = Astro.props;
+---
+
+<section class="section">
+  <h2>{title}</h2>
+
+  <div class="video-frame">
+    <iframe
+      src={`https://www.youtube.com/embed/${youtubeId}`}
+      title={title}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      class="video-iframe"
+    ></iframe>
+  </div>
+</section>

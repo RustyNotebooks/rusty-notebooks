@@ -1,0 +1,23 @@
+---
+const { title = "Chapters", items = [] } = Astro.props;
+---
+
+<section class="section">
+  <h2>{title}</h2>
+  <div class="chapter-list">
+    {items.map((item: { href: string | URL | null | undefined; image: string | null | undefined; title: unknown; text: unknown; }) => (
+      <a class="chapter-row" href={item.href}>
+        {item.image && (
+          <div class="chapter-thumb">
+            <img src={item.image} alt="" />
+          </div>
+        )}
+
+        <div class="chapter-copy">
+          <div class="chapter-row-title">{item.title}</div>
+          {item.text && <p class="muted">{item.text}</p>}
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

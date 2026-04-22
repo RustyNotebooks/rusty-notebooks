@@ -1,0 +1,8 @@
+---
+const { href = "/", label = "Back" } = Astro.props;
+---
+
+<a href={href} class="back-button">
+  <span class="arrow">←</span>
+  {label}
+</a>
