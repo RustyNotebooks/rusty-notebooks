@@ -5,60 +5,67 @@ import Hero from "../../../components/Hero.astro";
 import VisualizerSection from "../../../components/VisualizerSection.astro";
 import NotebookSection from "../../../components/NotebookSection.astro";
 import ListenSection from "../../../components/ListenSection.astro";
+import Footer from "../../../components/Footer.astro";
 ---
 
 <Layout title="Static on the Radio — Rusty Notebooks">
-<div class="chapter-bg" style="--bg-image: url('/images/staticontheradio.png');">
-<div class="chapter-content container">
-  <Hero eyebrow="Chapter I — Resonance of Rust"
+  <div
+    class="chapter-bg"
+    style="--bg-image: url('/images/staticontheradio.png');"
+  >
+    <div class="chapter-content container">
+      <Hero
+        eyebrow="Chapter I — Resonance of Rust"
         title="Static on the Radio"
-        backHref={"/chapters/chapter1"}/>
+        backHref={"/chapters/chapter1"}
+      />
 
-  <VisualizerSection
-    title="Official Visualizer"
-    youtubeId="01X9MLpyYFc"/>
+      <VisualizerSection title="Official Visualizer" youtubeId="01X9MLpyYFc" />
 
-  <NotebookSection title="From Rusty’s notebook">
-<div class="narrative">
-  <p>
-    Some signals don’t need to be perfect<br />
-    to be real.
-  </p>
+      <NotebookSection title="From Rusty’s notebook">
+        <div class="narrative">
+          <p>
+            Some signals don’t need to be perfect<br />
+            to be real.
+          </p>
 
-  <p>
-    “Static on the Radio” lives in those imperfect moments —<br />
-    the quiet crackle of an old station,<br />
-    fading memories,<br />
-    and the space between who we were<br />
-    and who we’re becoming.
-  </p>
+          <p>
+            “Static on the Radio” lives in those imperfect moments —<br />
+            the quiet crackle of an old station,<br />
+            fading memories,<br />
+            and the space between who we were<br />
+            and who we’re becoming.
+          </p>
 
-  <p class="narrative-final">
-    Sometimes the signal is weak…<br />
-    but the soul still comes through.
-  </p>
-</div>
-  </NotebookSection>
+          <p class="narrative-final">
+            Sometimes the signal is weak…<br />
+            but the soul still comes through.
+          </p>
+        </div>
+      </NotebookSection>
 
-<ListenSection
-  links={[
-    {
-      href: "https://www.youtube.com/watch?v=01X9MLpyYFc",
-      label: "YouTube",
-      type: "youtube"
-    },
-    {
-      href: "https://open.spotify.com/intl-de/track/0kLkI60wnizjpYaQGUC2SE?si=df1c5e77112c47e0",
-      label: "Spotify",
-      type: "spotify"
-    },
-    {
-      href: "https://music.apple.com/us/album/static-on-the-radio-single/1878947742",
-      label: "Apple Music",
-      type: "applemusic"
-    }
-  ]}
-/>
-    </div> <!-- chapter-content -->
-</div> <!-- chapter-bg -->
+      <ListenSection
+        links={[
+          {
+            href: "https://www.youtube.com/watch?v=01X9MLpyYFc",
+            label: "YouTube",
+            type: "youtube",
+          },
+          {
+            href: "https://open.spotify.com/intl-de/track/0kLkI60wnizjpYaQGUC2SE?si=df1c5e77112c47e0",
+            label: "Spotify",
+            type: "spotify",
+          },
+          {
+            href: "https://music.apple.com/us/album/static-on-the-radio-single/1878947742",
+            label: "Apple Music",
+            type: "applemusic",
+          },
+        ]}
+      />
+      <Footer />
+    </div>
+    <!-- chapter-content -->
+  </div>
+  <!-- chapter-bg -->
 </Layout>

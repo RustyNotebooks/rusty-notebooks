@@ -5,70 +5,71 @@ import Hero from "../../../components/Hero.astro";
 import VisualizerSection from "../../../components/VisualizerSection.astro";
 import NotebookSection from "../../../components/NotebookSection.astro";
 import ListenSection from "../../../components/ListenSection.astro";
+import Footer from "../../../components/Footer.astro";
 ---
 
 <Layout title="Copper & Rain — Rusty Notebooks">
-<div class="chapter-bg" style="--bg-image: url('/images/copperandrain.png');">
-<div class="chapter-content container">
-  <Hero eyebrow="Chapter I — Resonance of Rust"
+  <div class="chapter-bg" style="--bg-image: url('/images/copperandrain.png');">
+    <div class="chapter-content container">
+      <Hero
+        eyebrow="Chapter I — Resonance of Rust"
         title="Copper & Rain"
-        backHref={"/chapters/chapter1"}/>
+        backHref={"/chapters/chapter1"}
+      />
 
-  <VisualizerSection
-    title="Official Visualizer"
-    youtubeId="Tg_bR1-OWN0"/>
+      <VisualizerSection title="Official Visualizer" youtubeId="Tg_bR1-OWN0" />
 
-  <NotebookSection title="From Rusty’s notebook">
- <div class="narrative">
-  <p>
-    Some days carry a quiet kind of weight.
-  </p>
+      <NotebookSection title="From Rusty’s notebook">
+        <div class="narrative">
+          <p>Some days carry a quiet kind of weight.</p>
 
-  <p>
-    “Copper & Rain” lives in the spaces between moments —<br />
-    wet streets, fading light,<br />
-    and the feeling of standing somewhere between the past<br />
-    and whatever comes next.
-  </p>
+          <p>
+            “Copper & Rain” lives in the spaces between moments —<br />
+            wet streets, fading light,<br />
+            and the feeling of standing somewhere between the past<br />
+            and whatever comes next.
+          </p>
 
-  <p>
-    Memories return like distant thunder,<br />
-    soft at first, then impossible to ignore.
-  </p>
+          <p>
+            Memories return like distant thunder,<br />
+            soft at first, then impossible to ignore.
+          </p>
 
-  <p>
-    And there’s something about the rain —<br />
-    the way it settles on old ground,<br />
-    the way it turns everything familiar into something almost new.
-  </p>
+          <p>
+            And there’s something about the rain —<br />
+            the way it settles on old ground,<br />
+            the way it turns everything familiar into something almost new.
+          </p>
 
-  <p class="narrative-final">
-    Sometimes the sky turns grey…<br />
-    but there’s still something warm underneath.
-  </p>
-</div>
-  </NotebookSection>
+          <p class="narrative-final">
+            Sometimes the sky turns grey…<br />
+            but there’s still something warm underneath.
+          </p>
+        </div>
+      </NotebookSection>
 
-<ListenSection
-  links={[
-    {
-      href: "https://www.youtube.com/watch?v=Tg_bR1-OWN0",
-      label: "YouTube",
-      type: "youtube"
-    },
-    {
-      href: "https://open.spotify.com/intl-de/track/5sEMpQCObFYP3j3743TfCl?si=9d01407b065d46a5",
-      label: "Spotify",
-      type: "spotify"
-    },
-    {
-      href: "https://music.apple.com/us/album/copper-rain-single/1878947973",
-      label: "Apple Music",
-      type: "applemusic"
-    }
-  ]}
-/>
-
-    </div> <!-- chapter-content -->
-</div> <!-- chapter-bg -->
+      <ListenSection
+        links={[
+          {
+            href: "https://www.youtube.com/watch?v=Tg_bR1-OWN0",
+            label: "YouTube",
+            type: "youtube",
+          },
+          {
+            href: "https://open.spotify.com/intl-de/track/5sEMpQCObFYP3j3743TfCl?si=9d01407b065d46a5",
+            label: "Spotify",
+            type: "spotify",
+          },
+          {
+            href: "https://music.apple.com/us/album/copper-rain-single/1878947973",
+            label: "Apple Music",
+            type: "applemusic",
+          },
+        ]}
+      />
+      <Footer />
+    </div>
+    <!-- chapter-content -->
+  </div>
+  <!-- chapter-bg -->
 </Layout>

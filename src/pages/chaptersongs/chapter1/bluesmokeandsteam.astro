@@ -5,67 +5,74 @@ import Hero from "../../../components/Hero.astro";
 import VisualizerSection from "../../../components/VisualizerSection.astro";
 import NotebookSection from "../../../components/NotebookSection.astro";
 import ListenSection from "../../../components/ListenSection.astro";
+import Footer from "../../../components/Footer.astro";
 ---
 
 <Layout title="Blue Smoke & Steam — Rusty Notebooks">
-<div class="chapter-bg" style="--bg-image: url('/images/bluesmokeandsteam.png');">
-<div class="chapter-content container">
-  <Hero eyebrow="Chapter I — Resonance of Rust"
+  <div
+    class="chapter-bg"
+    style="--bg-image: url('/images/bluesmokeandsteam.png');"
+  >
+    <div class="chapter-content container">
+      <Hero
+        eyebrow="Chapter I — Resonance of Rust"
         title="Blue Smoke & Steam"
-        backHref={"/chapters/chapter1"}/>
+        backHref={"/chapters/chapter1"}
+      />
 
-  <VisualizerSection
-    title="Official Visualizer"
-    youtubeId="DO3Wy-2cyoY"/>
+      <VisualizerSection title="Official Visualizer" youtubeId="DO3Wy-2cyoY" />
 
-  <NotebookSection title="From Rusty’s notebook">
-<div class="narrative">
-  <p>
-    It captures that quiet hour before the world wakes up —<br />
-    mist hanging low over the creek,<br />
-    coffee warming your hands,<br />
-    and the slow breath of morning.
-  </p>
+      <NotebookSection title="From Rusty’s notebook">
+        <div class="narrative">
+          <p>
+            It captures that quiet hour before the world wakes up —<br />
+            mist hanging low over the creek,<br />
+            coffee warming your hands,<br />
+            and the slow breath of morning.
+          </p>
 
-  <p>
-    Built on soft fingerstyle guitar,<br />
-    warm low-end tones,<br />
-    and drifting harmonica,<br />
-    the song lives somewhere between memory and dream.
-  </p>
+          <p>
+            Built on soft fingerstyle guitar,<br />
+            warm low-end tones,<br />
+            and drifting harmonica,<br />
+            the song lives somewhere between memory and dream.
+          </p>
 
-  <p>
-    It’s not about chasing anything.<br />
-    It’s about slowing down long enough<br />
-    to feel where you already are.
-  </p>
+          <p>
+            It’s not about chasing anything.<br />
+            It’s about slowing down long enough<br />
+            to feel where you already are.
+          </p>
 
-  <p class="narrative-final">
-    “Give me the blue smoke, give me the steam —<br />
-    the space in between the truth and the dream.”
-  </p>
-</div>
-  </NotebookSection>
+          <p class="narrative-final">
+            “Give me the blue smoke, give me the steam —<br />
+            the space in between the truth and the dream.”
+          </p>
+        </div>
+      </NotebookSection>
 
-<ListenSection
-  links={[
-    {
-      href: "https://www.youtube.com/watch?v=DO3Wy-2cyoY",
-      label: "YouTube",
-      type: "youtube"
-    },
-    {
-      href: "https://open.spotify.com/intl-de/track/3VBcGH6F6Aqs38K6LdUfWi?si=ba40a40b35ec47a4",
-      label: "Spotify",
-      type: "spotify"
-    },
-    {
-      href: "https://music.apple.com/us/album/blue-smoke-steam-single/1876946716",
-      label: "Apple Music",
-      type: "applemusic"
-    }
-  ]}
-/>
-    </div> <!-- chapter-content -->
-</div> <!-- chapter-bg -->
+      <ListenSection
+        links={[
+          {
+            href: "https://www.youtube.com/watch?v=DO3Wy-2cyoY",
+            label: "YouTube",
+            type: "youtube",
+          },
+          {
+            href: "https://open.spotify.com/intl-de/track/3VBcGH6F6Aqs38K6LdUfWi?si=ba40a40b35ec47a4",
+            label: "Spotify",
+            type: "spotify",
+          },
+          {
+            href: "https://music.apple.com/us/album/blue-smoke-steam-single/1876946716",
+            label: "Apple Music",
+            type: "applemusic",
+          },
+        ]}
+      />
+      <Footer />
+    </div>
+    <!-- chapter-content -->
+  </div>
+  <!-- chapter-bg -->
 </Layout>

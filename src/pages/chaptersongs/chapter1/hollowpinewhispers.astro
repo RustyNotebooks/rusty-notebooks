@@ -5,68 +5,75 @@ import Hero from "../../../components/Hero.astro";
 import VisualizerSection from "../../../components/VisualizerSection.astro";
 import NotebookSection from "../../../components/NotebookSection.astro";
 import ListenSection from "../../../components/ListenSection.astro";
+import Footer from "../../../components/Footer.astro";
 ---
 
 <Layout title="Hollow Pine Whispers — Rusty Notebooks">
-<div class="chapter-bg" style="--bg-image: url('/images/hollowpinewhispers.png');">
-<div class="chapter-content container">
-  <Hero eyebrow="Chapter I — Resonance of Rust"
+  <div
+    class="chapter-bg"
+    style="--bg-image: url('/images/hollowpinewhispers.png');"
+  >
+    <div class="chapter-content container">
+      <Hero
+        eyebrow="Chapter I — Resonance of Rust"
         title="Hollow Pine Whispers"
-        backHref={"/chapters/chapter1"}/>
+        backHref={"/chapters/chapter1"}
+      />
 
-  <VisualizerSection
-    title="Official Visualizer"
-    youtubeId="AdKNVPTiB-c"/>
+      <VisualizerSection title="Official Visualizer" youtubeId="AdKNVPTiB-c" />
 
-  <NotebookSection title="From Rusty’s notebook">
-<div class="narrative">
-  <p>
-    Some places don’t speak loudly.<br />
-    They whisper.
-  </p>
+      <NotebookSection title="From Rusty’s notebook">
+        <div class="narrative">
+          <p>
+            Some places don’t speak loudly.<br />
+            They whisper.
+          </p>
 
-  <p>
-    “Hollow Pine Whispers” lives in the quiet spaces of the woods —<br />
-    wind moving through tall trees,<br />
-    slow evenings settling in,<br />
-    and the feeling of standing still long enough<br />
-    to hear what the world has been saying all along.
-  </p>
+          <p>
+            “Hollow Pine Whispers” lives in the quiet spaces of the woods —<br
+            />
+            wind moving through tall trees,<br />
+            slow evenings settling in,<br />
+            and the feeling of standing still long enough<br />
+            to hear what the world has been saying all along.
+          </p>
 
-  <p>
-    It’s a song about patience —<br />
-    about silence,<br />
-    and the quiet strength of things<br />
-    that grow slowly.
-  </p>
+          <p>
+            It’s a song about patience —<br />
+            about silence,<br />
+            and the quiet strength of things<br />
+            that grow slowly.
+          </p>
 
-  <p class="narrative-final">
-    Not everything needs to be loud<br />
-    to be understood.
-  </p>
-</div>
-  </NotebookSection>
+          <p class="narrative-final">
+            Not everything needs to be loud<br />
+            to be understood.
+          </p>
+        </div>
+      </NotebookSection>
 
-<ListenSection
-  links={[
-    {
-      href: "https://www.youtube.com/watch?v=AdKNVPTiB-c",
-      label: "YouTube",
-      type: "youtube"
-    },
-    {
-      href: "https://open.spotify.com/intl-de/track/2r7zzETTDLEOrPTNXkP3tl?si=264fd5e350a045fc",
-      label: "Spotify",
-      type: "spotify"
-    },
-    {
-      href: "https://music.apple.com/us/album/hollow-pine-whispers-single/1879039121",
-      label: "Apple Music",
-      type: "applemusic"
-    }
-  ]}
-/>
-
-    </div> <!-- chapter-content -->
-</div> <!-- chapter-bg -->
+      <ListenSection
+        links={[
+          {
+            href: "https://www.youtube.com/watch?v=AdKNVPTiB-c",
+            label: "YouTube",
+            type: "youtube",
+          },
+          {
+            href: "https://open.spotify.com/intl-de/track/2r7zzETTDLEOrPTNXkP3tl?si=264fd5e350a045fc",
+            label: "Spotify",
+            type: "spotify",
+          },
+          {
+            href: "https://music.apple.com/us/album/hollow-pine-whispers-single/1879039121",
+            label: "Apple Music",
+            type: "applemusic",
+          },
+        ]}
+      />
+      <Footer />
+    </div>
+    <!-- chapter-content -->
+  </div>
+  <!-- chapter-bg -->
 </Layout>

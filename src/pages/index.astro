@@ -3,28 +3,14 @@ import Layout from "../layouts/Layout.astro";
 import ChapterListSection from "../components/ChapterListSection.astro";
 import PlatformButton from "../components/PlatformButton.astro";
 import SideSheet from "../components/SideSheet.astro";
+import { upcomingItems } from "../data/upcoming";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Rusty Notebooks">
   <div class="chapter-bg" style="--bg-image: url('/images/index.png');">
     <div class="chapter-content container">
-      <SideSheet
-        title="Upcoming"
-        items={[
-          {
-            title: "Chapter 2 — Beyond the Rust",
-            text: "Slow roads, worn motel signs, and the sound of distance settling in.",
-            meta: "Coming soon",
-            href: "https://distrokid.com/hyperfollow/rustynotebooks/rust-of-resonance-echoes-2",
-            ctaLabel: "Pre-save",
-          },
-          {
-            title: "Next release",
-            text: "Another quiet fragment from the road, somewhere between leaving and return.",
-            meta: "Summer 2026",
-          }
-        ]}
-      />
+      <SideSheet title="Upcoming" items={upcomingItems} />
       <section class="hero">
         <img src="/images/rusty-badge.png" alt="" class="hero-badge-right" />
         <div class="eyebrow">Americana Storytelling in Songs</div>
@@ -102,6 +88,9 @@ import SideSheet from "../components/SideSheet.astro";
           },
         ]}
       />
+
+    <Footer />
+
     </div>
     <!-- chapter-content -->
   </div>

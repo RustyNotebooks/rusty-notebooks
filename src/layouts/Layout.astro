@@ -42,7 +42,7 @@ const { title = "Rusty Notebooks" } = Astro.props;
       .container {
         max-width: 900px;
         margin: 0 auto;
-        padding: 48px 20px 80px;
+        padding: 48px 20px 0px;
       }
 
       .eyebrow {
@@ -820,6 +820,42 @@ const { title = "Rusty Notebooks" } = Astro.props;
         border-color: rgba(255, 255, 255, 0.2);
         color: var(--text);
         text-decoration: none;
+      }
+
+      /* Footer */
+      .site-footer {
+        margin-top: 140px;
+        padding: 32px 20px 25px;
+        text-align: center;
+
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        flex-wrap: wrap;
+
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.45);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .footer-links a:hover {
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      .footer-copy {
+        margin-top: 12px;
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.35);
       }
 
       /* Desktop */

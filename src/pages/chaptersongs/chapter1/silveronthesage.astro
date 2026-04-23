@@ -4,62 +4,70 @@ import Hero from "../../../components/Hero.astro";
 import VisualizerSection from "../../../components/VisualizerSection.astro";
 import NotebookSection from "../../../components/NotebookSection.astro";
 import ListenSection from "../../../components/ListenSection.astro";
+import Footer from "../../../components/Footer.astro";
 ---
 
 <Layout title="Silver on the Sage — Rusty Notebooks">
-<div class="chapter-bg" style="--bg-image: url('/images/silveronthesage.png');">
-<div class="chapter-content container">
-  <Hero eyebrow="Chapter I — Resonance of Rust"
-        title="Silver on the Sage"
-        backHref={"/chapters/chapter1"}/>
+    <div
+        class="chapter-bg"
+        style="--bg-image: url('/images/silveronthesage.png');"
+    >
+        <div class="chapter-content container">
+            <Hero
+                eyebrow="Chapter I — Resonance of Rust"
+                title="Silver on the Sage"
+                backHref={"/chapters/chapter1"}
+            />
 
-  <VisualizerSection
-    title="Official Visualizer"
-    youtubeId="H68oKjMzJd0"/>
+            <VisualizerSection
+                title="Official Visualizer"
+                youtubeId="H68oKjMzJd0"
+            />
 
-  <NotebookSection title="From Rusty’s notebook">
-<div class="narrative">
-  <p>
-    Some nights feel wide enough<br />
-    to hold the whole sky.
-  </p>
+            <NotebookSection title="From Rusty’s notebook">
+                <div class="narrative">
+                    <p>
+                        Some nights feel wide enough<br />
+                        to hold the whole sky.
+                    </p>
 
-  <p>
-    “Silver on the Sage” lives out on the high plains —<br />
-    campfire smoke rising into the dark,<br />
-    wind moving through the sage,<br />
-    and the quiet sense<br />
-    that the past has finally loosened its grip.
-  </p>
+                    <p>
+                        “Silver on the Sage” lives out on the high plains —<br
+                        />
+                        campfire smoke rising into the dark,<br />
+                        wind moving through the sage,<br />
+                        and the quiet sense<br />
+                        that the past has finally loosened its grip.
+                    </p>
 
-  <p>
-    It’s a song about distance —<br />
-    about healing old scars<br />
-    under a sky that stretches further<br />
-    than our worries.
-  </p>
+                    <p>
+                        It’s a song about distance —<br />
+                        about healing old scars<br />
+                        under a sky that stretches further<br />
+                        than our worries.
+                    </p>
 
-  <p class="narrative-final">
-    Out where the fire burns low<br />
-    and the stars start writing<br />
-    their stories again.
-  </p>
-</div>
-  </NotebookSection>
+                    <p class="narrative-final">
+                        Out where the fire burns low<br />
+                        and the stars start writing<br />
+                        their stories again.
+                    </p>
+                </div>
+            </NotebookSection>
 
-<ListenSection
-  links={[
-    {
-      href: "https://www.youtube.com/watch?v=H68oKjMzJd0",
-      label: "YouTube",
-      type: "youtube"
-    },
-    {
-      href: "https://open.spotify.com/intl-de/track/1A9dwZe9TenaqG3QjgPa5f?si=5499952f770c4740",
-      label: "Spotify",
-      type: "spotify"
-    }
-    /* Comming soon 
+            <ListenSection
+                links={[
+                    {
+                        href: "https://www.youtube.com/watch?v=H68oKjMzJd0",
+                        label: "YouTube",
+                        type: "youtube",
+                    },
+                    {
+                        href: "https://open.spotify.com/intl-de/track/1A9dwZe9TenaqG3QjgPa5f?si=5499952f770c4740",
+                        label: "Spotify",
+                        type: "spotify",
+                    },
+                    /* Comming soon 
     ,
     {
       href: "https://music.apple.com/us/album/burn-cedarwood/1877571983?i=1877571984",
@@ -67,9 +75,11 @@ import ListenSection from "../../../components/ListenSection.astro";
       type: "applemusic"
     }
       */
-  ]}
-/>
-
-    </div> <!-- chapter-content -->
-</div> <!-- chapter-bg -->
+                ]}
+            />
+            <Footer />
+        </div>
+        <!-- chapter-content -->
+    </div>
+    <!-- chapter-bg -->
 </Layout>
