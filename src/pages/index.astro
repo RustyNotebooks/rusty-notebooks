@@ -2,90 +2,108 @@
 import Layout from "../layouts/Layout.astro";
 import ChapterListSection from "../components/ChapterListSection.astro";
 import PlatformButton from "../components/PlatformButton.astro";
+import SideSheet from "../components/SideSheet.astro";
 ---
 
 <Layout title="Rusty Notebooks">
   <div class="chapter-bg" style="--bg-image: url('/images/index.png');">
-<div class="chapter-content container">
-  <section class="hero">
-      <img
-    src="/images/rusty-badge.png"
-    alt=""
-    class="hero-badge-right"
-  />
-    <div class="eyebrow">Americana Storytelling in Songs</div>
-    <h1>Rusty Notebooks</h1>
-    <div class="narrative">
-  <p>
-    Rusty Notebooks is a long-form Americana story 
-    told in fragments, songs, memories and moments from a life that didn’t unfold all at once.
-  </p>
+    <div class="chapter-content container">
+      <SideSheet
+        title="Upcoming"
+        items={[
+          {
+            title: "Chapter 2 — Beyond the Rust",
+            text: "Slow roads, worn motel signs, and the sound of distance settling in.",
+            meta: "Coming soon",
+            href: "https://distrokid.com/hyperfollow/rustynotebooks/rust-of-resonance-echoes-2",
+            ctaLabel: "Pre-save",
+          },
+          {
+            title: "Next release",
+            text: "Another quiet fragment from the road, somewhere between leaving and return.",
+            meta: "Summer 2026",
+          }
+        ]}
+      />
+      <section class="hero">
+        <img src="/images/rusty-badge.png" alt="" class="hero-badge-right" />
+        <div class="eyebrow">Americana Storytelling in Songs</div>
+        <h1>Rusty Notebooks</h1>
+        <div class="narrative">
+          <p>
+            Rusty Notebooks is a long-form Americana story told in fragments,
+            songs, memories and moments from a life that didn’t unfold all at
+            once.
+          </p>
 
-  <p>
-    Set somewhere between leaving and staying,<br />
-    the music traces the quiet weight of time,<br />
-    the roads we outgrow,<br />
-    and the things we never quite say.
-  </p>
+          <p>
+            Set somewhere between leaving and staying,<br />
+            the music traces the quiet weight of time,<br />
+            the roads we outgrow,<br />
+            and the things we never quite say.
+          </p>
 
-  <p>
-    Each release reveals another piece of Rusty — not in order, but in truth.
-  </p>
+          <p>
+            Each release reveals another piece of Rusty — not in order, but in
+            truth.
+          </p>
 
-  <p class="narrative-final">
-    Some stories don’t begin where you think.
-  </p>
-</div>
-  </section>
+          <p class="narrative-final">
+            Some stories don’t begin where you think.
+          </p>
+        </div>
+      </section>
 
-<div class="tag-row">
-  <PlatformButton
-    href="https://open.spotify.com/intl-de/artist/0jMtkiMsFVq3C0P3z7AgGh?si=jZQsAIhYT92yleGrw5T1mw"
-    label="Listen"
-    type="spotify"
-    variant="tag"
-  />
+      <div class="tag-row">
+        <PlatformButton
+          href="https://open.spotify.com/intl-de/artist/0jMtkiMsFVq3C0P3z7AgGh?si=jZQsAIhYT92yleGrw5T1mw"
+          label="Listen"
+          type="spotify"
+          variant="tag"
+        />
 
-<PlatformButton
-  href="https://music.apple.com/us/artist/rusty-notebooks/1876510481"
-  label="Listen"
-  type="applemusic"
-  variant="tag"
-/>
+        <PlatformButton
+          href="https://music.apple.com/us/artist/rusty-notebooks/1876510481"
+          label="Listen"
+          type="applemusic"
+          variant="tag"
+        />
 
-  <PlatformButton
-    href="https://www.youtube.com/@RustyNotebooks"
-    label="Watch"
-    type="youtube"
-    variant="tag"
-  />
+        <PlatformButton
+          href="https://www.youtube.com/@RustyNotebooks"
+          label="Watch"
+          type="youtube"
+          variant="tag"
+        />
 
-  <PlatformButton
-    href="https://www.instagram.com/rustynotebooks/"
-    label="Journal"
-    type="instagram"
-    variant="tag"
-  />
+        <PlatformButton
+          href="https://www.instagram.com/rustynotebooks/"
+          label="Journal"
+          type="instagram"
+          variant="tag"
+        />
 
-  <PlatformButton
-    href="https://www.tiktok.com/@rusty.notebooks"
-    label="Moments"
-    type="tiktok"
-    variant="tag"
-  />
-</div>
+        <PlatformButton
+          href="https://www.tiktok.com/@rusty.notebooks"
+          label="Moments"
+          type="tiktok"
+          variant="tag"
+        />
+      </div>
 
-<ChapterListSection
-  title="Chapters"
-  items={[
-    {
-      title: "Chapter 1 — Resonance of Rust",
-      text: "It is the first chapter in the quiet journey of Rusty Notebooks. Some say this is where the story begins. Others might say it’s where it finally ends.",
-      href: "/chapters/chapter1",
-      image: "/images/resonanceofrustcover.png"
-    }
-  ]}
-/>
-    </div> <!-- chapter-content -->
-</div> <!-- chapter-bg -->
+      <ChapterListSection
+        title="Chapters"
+        items={[
+          {
+            title: "Chapter 1 — Resonance of Rust",
+            text: "It is the first chapter in the quiet journey of Rusty Notebooks. Some say this is where the story begins. Others might say it’s where it finally ends.",
+            href: "/chapters/chapter1",
+            image: "/images/resonanceofrustcover.png",
+          },
+        ]}
+      />
+    </div>
+    <!-- chapter-content -->
+  </div>
+  <!-- chapter-bg -->
 </Layout>

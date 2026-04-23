@@ -1,0 +1,94 @@
+---
+type SheetItem = {
+  title: string;
+  text?: string;
+  meta?: string;
+  href?: string;
+  ctaLabel?: string;
+};
+
+const { title = "Upcoming", items = [] as SheetItem[] } = Astro.props;
+---
+
+<div class="sheet-root">
+  <button class="sheet-trigger">
+    {title}
+  </button>
+
+  <div class="sheet-overlay"></div>
+
+  <aside class="side-sheet">
+    <button class="sheet-close" aria-label="Close">✕</button>
+
+    <div class="sheet-content">
+      <div class="sheet-eyebrow">Rusty's Notes</div>
+      <h2 class="sheet-title">{title}</h2>
+
+      {items.map((item: { title: unknown; text: unknown; meta: unknown; href: string | URL | null | undefined; ctaLabel: any; }) => (
+        <div class="sheet-entry">
+          <div class="sheet-entry-title">{item.title}</div>
+
+          {item.text && <p>{item.text}</p>}
+
+          {item.meta && (
+            <div class="sheet-meta">{item.meta}</div>
+          )}
+
+          {item.href && (
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="sheet-link"
+            >
+              {item.ctaLabel ?? "Open"}
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </aside>
+</div>
+
+<script is:inline>
+  document.querySelectorAll(".sheet-root").forEach((root) => {
+    const openBtn = root.querySelector(".sheet-trigger");
+    const closeBtn = root.querySelector(".sheet-close");
+    const overlay = root.querySelector(".sheet-overlay");
+    const sheet = root.querySelector(".side-sheet");
+
+    let scrollY = 0;
+
+    const open = () => {
+      scrollY = window.scrollY;
+
+      sheet?.classList.add("active");
+      overlay?.classList.add("active");
+
+      document.documentElement.classList.add("sheet-open");
+      document.body.classList.add("sheet-open");
+      document.body.style.top = `-${scrollY}px`;
+    };
+
+    const close = () => {
+      sheet?.classList.remove("active");
+      overlay?.classList.remove("active");
+
+      document.documentElement.classList.remove("sheet-open");
+      document.body.classList.remove("sheet-open");
+      document.body.style.top = "";
+
+      window.scrollTo(0, scrollY);
+    };
+
+    openBtn?.addEventListener("click", open);
+    closeBtn?.addEventListener("click", close);
+    overlay?.addEventListener("click", close);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        close();
+      }
+    });
+  });
+</script>

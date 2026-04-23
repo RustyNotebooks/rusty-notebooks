@@ -3,12 +3,15 @@ import Layout from "../../layouts/Layout.astro";
 import Hero from "../../components/Hero.astro";
 import TrackListSection from "../../components/TrackListSection.astro";
 import FullAlbumSection from "../../components/FullAlbumSection.astro";
+import SideSheet from "../../components/SideSheet.astro";
+import { upcomingItems } from "../../data/upcoming";
 ---
 
 <Layout title="Chapter 1">
 
 <div class="chapter-bg" style="--bg-image: url('/images/template.png');">
 <div class="chapter-content container">
+  <SideSheet title="Upcoming" items={upcomingItems} />
   <Hero eyebrow="Chapter 1"
         title="Resonance of Rust"
         backHref="/"/>
