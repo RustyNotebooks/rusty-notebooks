@@ -1,0 +1,79 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Hero from "../../../components/Hero.astro";
+import VisualizerSection from "../../../components/VisualizerSection.astro";
+import NotebookSection from "../../../components/NotebookSection.astro";
+import ListenSection from "../../../components/ListenSection.astro";
+---
+
+<Layout title="The Humming Heartwood — Rusty Notebooks">
+<div class="chapter-bg" style="--bg-image: url('/images/thehumingheartwood.png');">
+<div class="chapter-content container">
+  <Hero eyebrow="Chapter I — Resonance of Rust"
+        title="The Humming Heartwood"
+        backHref={"/chapters/chapter1"}/>
+
+  <VisualizerSection
+    title="Official Visualizer"
+    youtubeId="XmMtga0e4Rs"/>
+
+  <NotebookSection title="From Rusty’s notebook">
+<div class="narrative">
+  <p>
+    Some mornings arrive quietly.<br />
+    The fog lifts,<br />
+    the house breathes,<br />
+    and the day begins<br />
+    without asking anything from you.
+  </p>
+
+  <p>
+    “The Humming Heartwood” lives in that moment —<br />
+    old wood in the frame,<br />
+    the slow warmth of morning light,<br />
+    and the feeling that the life you were chasing<br />
+    has finally come to rest.
+  </p>
+
+  <p>
+    It’s a song about roots —<br />
+    about stillness,<br />
+    cedar walls,<br />
+    and the quiet rhythm of a home<br />
+    that has been waiting all along.
+  </p>
+
+  <p class="narrative-final">
+    Sometimes the loudest sound in the morning<br />
+    is the quiet hum of something<br />
+    finally at peace.
+  </p>
+</div>
+  </NotebookSection>
+
+<ListenSection
+  links={[
+    {
+      href: "https://www.youtube.com/watch?v=XmMtga0e4Rs",
+      label: "YouTube",
+      type: "youtube"
+    },
+    {
+      href: "https://open.spotify.com/intl-de/track/6QNr5f7NQIw3tY0VPyBf3W?si=f206df2901e7409b",
+      label: "Spotify",
+      type: "spotify"
+    }
+    /* Comming soon 
+    ,
+    {
+      href: "https://music.apple.com/us/album/burn-cedarwood/1877571983?i=1877571984",
+      label: "Apple Music",
+      type: "applemusic"
+    }
+      */
+  ]}
+/>
+
+    </div> <!-- chapter-content -->
+</div> <!-- chapter-bg -->
+</Layout>

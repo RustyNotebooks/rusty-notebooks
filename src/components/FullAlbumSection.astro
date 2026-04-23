@@ -4,16 +4,15 @@ import PlatformButton from "./PlatformButton.astro";
 const {
   title = "Full Album",
   text = null,
-  links = []
+  links = [],
+  youtubeId = null
 } = Astro.props;
 ---
 
 <section class="section section-album">
   <h2>{title}</h2>
 
-  {text && (
-    <p class="muted album-intro">{text}</p>
-  )}
+  {text && <p class="muted album-intro">{text}</p>}
 
   <div class="tag-row">
     {links.map((link: { href: unknown; label: unknown; type: unknown; }) => (
@@ -25,4 +24,15 @@ const {
       />
     ))}
   </div>
-</section>
+
+  {youtubeId && (
+    <div class="album-video">
+      <iframe
+        src={`https://www.youtube.com/embed/${youtubeId}`}
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      ></iframe>
+    </div>
+  )}

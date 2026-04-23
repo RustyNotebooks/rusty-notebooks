@@ -1,0 +1,75 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Hero from "../../../components/Hero.astro";
+import VisualizerSection from "../../../components/VisualizerSection.astro";
+import NotebookSection from "../../../components/NotebookSection.astro";
+import ListenSection from "../../../components/ListenSection.astro";
+---
+
+<Layout title="Dust in the Sunbeam — Rusty Notebooks">
+<div class="chapter-bg" style="--bg-image: url('/images/dustinthesunbeam.png');">
+<div class="chapter-content container">
+  <Hero eyebrow="Chapter I — Resonance of Rust"
+        title="Dust in the Sunbeam"
+        backHref={"/chapters/chapter1"}/>
+
+  <VisualizerSection
+    title="Official Visualizer"
+    youtubeId="_-lOmRKUf5A"/>
+
+  <NotebookSection title="From Rusty’s notebook">
+<div class="narrative">
+  <p>
+    Some roads lead away from home.<br />
+    Others lead you back.
+  </p>
+
+  <p>
+    “Anchor in the Grain” lives in that quiet moment when the journey finally slows —<br />
+    gravel under tired wheels,<br />
+    a porch light in the distance,<br />
+    and the feeling of stepping back into a place<br />
+    that has been waiting all along.
+  </p>
+
+  <p>
+    It’s a song about steady ground —<br />
+    about cedar walls,<br />
+    old wood,<br />
+    and the kind of peace<br />
+    that doesn’t rush.
+  </p>
+
+  <p class="narrative-final">
+    The anchor in the grain.<br />
+    The spirit in the stone.
+  </p>
+</div>
+  </NotebookSection>
+
+<ListenSection
+  links={[
+    {
+      href: "https://www.youtube.com/watch?v=_-lOmRKUf5A",
+      label: "YouTube",
+      type: "youtube"
+    },
+    {
+      href: "https://open.spotify.com/intl-de/track/2vFC7nsAaM1CxoQNDyiqdf?si=b011c41770414b79",
+      label: "Spotify",
+      type: "spotify"
+    }
+    /* Comming soon 
+    ,
+    {
+      href: "https://music.apple.com/us/album/burn-cedarwood/1877571983?i=1877571984",
+      label: "Apple Music",
+      type: "applemusic"
+    }
+      */
+  ]}
+/>
+
+    </div> <!-- chapter-content -->
+</div> <!-- chapter-bg -->
+</Layout>

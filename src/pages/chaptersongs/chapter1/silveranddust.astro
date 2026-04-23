@@ -1,0 +1,77 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Hero from "../../../components/Hero.astro";
+import VisualizerSection from "../../../components/VisualizerSection.astro";
+import NotebookSection from "../../../components/NotebookSection.astro";
+import ListenSection from "../../../components/ListenSection.astro";
+---
+
+<Layout title="Silver & Dust— Rusty Notebooks">
+<div class="chapter-bg" style="--bg-image: url('/images/silveranddust.png');">
+<div class="chapter-content container">
+  <Hero eyebrow="Chapter I — Resonance of Rust"
+        title="Silver & Dust"
+        backHref={"/chapters/chapter1"}/>
+
+  <VisualizerSection
+    title="Official Visualizer"
+    youtubeId="V6zb6-6p7mo"/>
+
+  <NotebookSection title="From Rusty’s notebook">
+<div class="narrative">
+  <p>
+    Some love stories don’t arrive like lightning.<br />
+    They settle slowly.
+  </p>
+
+  <p>
+    “Silver & Dust” lives in the quiet years —<br />
+    peeling paint on old doors,<br />
+    long evenings in familiar rooms,<br />
+    and the slow realization<br />
+    that the life you were searching for<br />
+    has been sitting beside you all along.
+  </p>
+
+  <p>
+    It’s a song about time —<br />
+    about weathered wood,<br />
+    worn roads,<br />
+    and the quiet strength that grows<br />
+    when two people decide to stay.
+  </p>
+
+  <p class="narrative-final">
+    Silver in the hair.<br />
+    Dust on the shelves.<br />
+    And a love that finally feels like home.
+  </p>
+</div>
+  </NotebookSection>
+
+<ListenSection
+  links={[
+    {
+      href: "https://www.youtube.com/watch?v=V6zb6-6p7mo",
+      label: "YouTube",
+      type: "youtube"
+    },
+    {
+      href: "https://open.spotify.com/intl-de/track/2xjYHeq9wp6hgpG7NJ28ea?si=3a9aed7d36ab4d9d",
+      label: "Spotify",
+      type: "spotify"
+    }
+    /* Comming soon 
+    ,
+    {
+      href: "https://music.apple.com/us/album/burn-cedarwood/1877571983?i=1877571984",
+      label: "Apple Music",
+      type: "applemusic"
+    }
+      */
+  ]}
+/>
+
+    </div> <!-- chapter-content -->
+</div> <!-- chapter-bg -->
+</Layout>
