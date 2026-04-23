@@ -1,9 +1,11 @@
 ---
+import { ClientRouter } from "astro:transitions";
 const { title = "Rusty Notebooks" } = Astro.props;
 ---
 
 <html lang="en">
   <head>
+    <ClientRouter />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -937,6 +939,67 @@ const { title = "Rusty Notebooks" } = Astro.props;
         .chapter-bg::before {
           display: none;
         }
+      }
+
+      /* Page transitions */
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation-duration: 0.5s;
+        animation-timing-function: ease;
+      }
+
+      ::view-transition-old(root) {
+        animation-name: dust-out;
+      }
+
+      ::view-transition-new(root) {
+        animation-name: dust-in;
+      }
+
+      @keyframes dust-out {
+        from {
+          opacity: 1;
+          filter: blur(0px);
+        }
+        to {
+          opacity: 0;
+          filter: blur(6px);
+        }
+      }
+
+      @keyframes dust-in {
+        from {
+          opacity: 0;
+          filter: blur(6px);
+        }
+        to {
+          opacity: 1;
+          filter: blur(0px);
+        }
+      }
+      /* Mobile Fallback */
+      @media (hover: none), (pointer: coarse) {
+        body {
+          animation: mobile-fade-in 0.3s ease;
+        }
+
+        @keyframes mobile-fade-in {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      }
+      @media (hover: none), (pointer: coarse) {
+        body {
+          animation: mobile-fade-in 0.35s ease;
+        }
+      }
+      /* Iframes von View Transitions ausschließen */
+      iframe {
+        view-transition-name: none;
       }
     </style>
   </head>
