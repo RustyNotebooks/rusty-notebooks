@@ -51,44 +51,50 @@ const { title = "Upcoming", items = [] as SheetItem[] } = Astro.props;
 </div>
 
 <script is:inline>
-  document.querySelectorAll(".sheet-root").forEach((root) => {
-    const openBtn = root.querySelector(".sheet-trigger");
-    const closeBtn = root.querySelector(".sheet-close");
-    const overlay = root.querySelector(".sheet-overlay");
-    const sheet = root.querySelector(".side-sheet");
+  function initSideSheets() {
+    document.querySelectorAll(".sheet-root").forEach((root) => {
+      if (root.dataset.initialized === "true") return;
+      root.dataset.initialized = "true";
 
-    let scrollY = 0;
+      const openBtn = root.querySelector(".sheet-trigger");
+      const closeBtn = root.querySelector(".sheet-close");
+      const overlay = root.querySelector(".sheet-overlay");
+      const sheet = root.querySelector(".side-sheet");
 
-    const open = () => {
-      scrollY = window.scrollY;
+      let scrollY = 0;
 
-      sheet?.classList.add("active");
-      overlay?.classList.add("active");
+      const open = () => {
+        scrollY = window.scrollY;
 
-      document.documentElement.classList.add("sheet-open");
-      document.body.classList.add("sheet-open");
-      document.body.style.top = `-${scrollY}px`;
-    };
+        sheet?.classList.add("active");
+        overlay?.classList.add("active");
 
-    const close = () => {
-      sheet?.classList.remove("active");
-      overlay?.classList.remove("active");
+        document.documentElement.classList.add("sheet-open");
+        document.body.classList.add("sheet-open");
+        document.body.style.top = `-${scrollY}px`;
+      };
 
-      document.documentElement.classList.remove("sheet-open");
-      document.body.classList.remove("sheet-open");
-      document.body.style.top = "";
+      const close = () => {
+        sheet?.classList.remove("active");
+        overlay?.classList.remove("active");
 
-      window.scrollTo(0, scrollY);
-    };
+        document.documentElement.classList.remove("sheet-open");
+        document.body.classList.remove("sheet-open");
+        document.body.style.top = "";
 
-    openBtn?.addEventListener("click", open);
-    closeBtn?.addEventListener("click", close);
-    overlay?.addEventListener("click", close);
+        window.scrollTo(0, scrollY);
+      };
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        close();
-      }
+      openBtn?.addEventListener("click", open);
+      closeBtn?.addEventListener("click", close);
+      overlay?.addEventListener("click", close);
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") close();
+      });
     });
-  });
+  }
+
+  initSideSheets();
+  document.addEventListener("astro:page-load", initSideSheets);
 </script>
