@@ -932,7 +932,7 @@ const { title = "Rusty Notebooks" } = Astro.props;
         .chapter-bg {
           overflow: hidden;
           background:
-            linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+            linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.65)),
             var(--bg-image, url("/images/chapter1.png")) center/cover no-repeat;
         }
 
@@ -1007,5 +1007,21 @@ const { title = "Rusty Notebooks" } = Astro.props;
     <main>
       <slot />
     </main>
+
+    <script is:inline>
+      const scrollPositions = new Map();
+
+      document.addEventListener("astro:before-preparation", () => {
+        scrollPositions.set(location.pathname, window.scrollY);
+      });
+
+      document.addEventListener("astro:after-swap", () => {
+        const y = scrollPositions.get(location.pathname);
+
+        if (typeof y === "number") {
+          window.scrollTo({ top: y, left: 0, behavior: "instant" });
+        }
+      });
+    </script>
   </body>
 </html>
