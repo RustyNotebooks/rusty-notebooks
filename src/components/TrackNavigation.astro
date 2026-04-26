@@ -1,0 +1,65 @@
+---
+// src/components/TrackNavigation.astro
+interface Props {
+    chapter: any;
+    prevSong: any;
+    nextSong: any;
+    allAlbums: any;
+}
+
+const { chapter, prevSong, nextSong, allAlbums } = Astro.props;
+---
+
+<nav class="track-navigation">
+    <div class="nav-wrapper prev">
+        {
+            prevSong ? (
+                <>
+                    <a
+                        href={`/${chapter.id}/track/${prevSong.id}`}
+                        class="nav-btn"
+                    >
+                        ←
+                    </a>
+                    <div class="nav-info">
+                        <span class="nav-label">Previous</span>
+                        <span class="nav-title">
+                            {(
+                                allAlbums[`${chapter.id}Songs`] as any[]
+                            ).findIndex((s) => s.id === prevSong.id) + 1}
+                            . {prevSong.title}
+                        </span>
+                    </div>
+                </>
+            ) : (
+                <div class="nav-empty" />
+            )
+        }
+    </div>
+
+    <div class="nav-wrapper next">
+        {
+            nextSong ? (
+                <>
+                    <div class="nav-info">
+                        <span class="nav-label">Next</span>
+                        <span class="nav-title">
+                            {(
+                                allAlbums[`${chapter.id}Songs`] as any[]
+                            ).findIndex((s) => s.id === nextSong.id) + 1}
+                            . {nextSong.title}
+                        </span>
+                    </div>
+                    <a
+                        href={`/${chapter.id}/track/${nextSong.id}`}
+                        class="nav-btn"
+                    >
+                        →
+                    </a>
+                </>
+            ) : (
+                <div class="nav-empty" />
+            )
+        }
+    </div>
+</nav>

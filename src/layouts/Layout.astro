@@ -365,6 +365,7 @@ const { title = "Rusty Notebooks" } = Astro.props;
       }
 
       .hero {
+        margin-bottom: 2rem;
         position: relative;
       }
 
@@ -394,7 +395,27 @@ const { title = "Rusty Notebooks" } = Astro.props;
       }
 
       h1 {
-        font-size: 3.6rem;
+        margin: 0;
+        line-height: 1.1;
+      }
+
+      .hero-info {
+        font-size: 0.85rem;
+        font-weight: 500;
+        opacity: 0.6;
+        letter-spacing: -0.01em;
+        text-transform: uppercase;
+        margin-top: 1rem;
+        margin-bottom: -0.2rem;
+        line-height: 1;
+
+        /* Versuche es mal hiermit: */
+        font-variant-numeric: lining-nums tabular-nums;
+
+        /* Wir nutzen ein etwas aggressiveres Offset */
+        position: relative;
+        font-family: Charter, Georgia, "Times New Roman", serif;
+        top: -3px;
       }
 
       /* TagRow Wrapper */
@@ -954,6 +975,101 @@ const { title = "Rusty Notebooks" } = Astro.props;
 
       ::view-transition-new(root) {
         animation-name: dust-in;
+      }
+
+      .track-navigation {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin: 3rem 0;
+        width: 100%;
+      }
+
+      .nav-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        min-width: 0;
+      }
+
+      .next {
+        justify-content: flex-end;
+      }
+
+      /* Navigation Button (der Kreis) */
+      .nav-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        text-decoration: none !important;
+        color: inherit;
+        transition: all 0.3s ease;
+        opacity: 0.4;
+        flex-shrink: 0;
+      }
+
+      .nav-btn:hover {
+        opacity: 1;
+        border-color: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      /* Text Info Bereich */
+      .nav-info {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        min-width: 0;
+      }
+
+      .nav-label {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        opacity: 0.5;
+        margin-bottom: 0.1rem;
+      }
+
+      .nav-title {
+        font-size: 0.9rem;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      /* Naviagtion Track */
+      @media (max-width: 600px) {
+        .track-navigation {
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+          justify-items: center;
+        }
+
+        .nav-info {
+          display: none; /* Titel auf Mobile komplett ausblenden */
+        }
+
+        .nav-wrapper {
+          justify-content: center;
+          gap: 0;
+        }
+
+        /* Buttons zentrieren bei Mobile */
+        .prev {
+          justify-content: flex-end;
+        }
+        .next {
+          justify-content: flex-start;
+        }
+      }
+
+      .nav-empty {
+        display: none;
       }
 
       @keyframes dust-out {
