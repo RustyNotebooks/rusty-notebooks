@@ -1,0 +1,60 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Hero from "../../../components/Hero.astro";
+import VisualizerSection from "../../../components/VisualizerSection.astro";
+import NotebookSection from "../../../components/NotebookSection.astro";
+import ListenSection from "../../../components/ListenSection.astro";
+import Footer from "../../../components/Footer.astro";
+
+// Daten importieren
+import { chapters } from "../../../data/chapters";
+import * as allAlbums from "../../../data/albums";
+
+export async function getStaticPaths() {
+  const paths = [];
+
+  for (const chapter of chapters) {
+    const albumKey = `${chapter.id}Songs` as keyof typeof allAlbums;
+    const songs = allAlbums[albumKey] || [];
+
+    for (const song of songs) {
+      paths.push({
+        // WICHTIG: Die Keys müssen exakt deinen Datei-Platzhaltern entsprechen
+        params: { 
+            chapter: chapter.id, 
+            track: song.id  // Hier muss jetzt "track" stehen, weil die Datei [track].astro heißt
+        },
+        props: { chapter, song },
+      });
+    }
+  }
+  return paths;
+}
+
+const { chapter, song } = Astro.props;
+---
+
+<Layout title={`${song.title}`}>
+  <div
+    class="chapter-bg"
+    style={`--bg-image: url('${song.image}');`}
+  >
+    <div class="chapter-content container">
+      <Hero
+        eyebrow={chapter.title}
+        title={song.title}
+        backHref={song.backHref}
+      />
+
+      <VisualizerSection title="Official Visualizer" youtubeId={song.youtubeId} />
+
+      <NotebookSection title="From Rusty’s notebook">
+        <div class="narrative" set:html={song.notebookHtml} />
+      </NotebookSection>
+
+      <ListenSection links={song.links} />
+      
+      <Footer />
+    </div>
+  </div>
+</Layout>

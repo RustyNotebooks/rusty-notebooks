@@ -1,0 +1,61 @@
+---
+import { chapters } from "../../data/chapters";
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import Footer from "../../components/Footer.astro";
+import SideSheet from "../../components/SideSheet.astro";
+import { upcomingItems } from "../../data/upcoming";
+import * as allAlbums from "../../data/albums";
+import TrackListSection from "../../components/TrackListSection.astro";
+import FullAlbumSection from "../../components/FullAlbumSection.astro";
+
+export function getStaticPaths() {
+    return chapters.map((chapter) => ({
+        params: { chapter: chapter.id },
+        props: { chapter },
+    }));
+}
+
+const { chapter } = Astro.props;
+const key = `${chapter.id}Songs` as keyof typeof allAlbums;
+const songs: any[] = (allAlbums[key] || []) as any[];
+---
+
+<Layout title={`${chapter.titleLayout}`}>
+    <div
+        class="chapter-bg"
+        style={`--bg-image: url('${chapter.pageBackground}');`}
+    >
+        <div class="chapter-content container">
+            <SideSheet title="Upcoming" items={upcomingItems} />
+            <Hero
+                eyebrow="Rusty Notebooks"
+                title={chapter.title}
+                backHref="/"
+            />
+
+            <section class="section section-narrative">
+                <div class="narrative">
+                    <Fragment set:html={chapter.narrativeHtml} />
+                </div>
+            </section>
+
+            <TrackListSection
+                title="Songs"
+                songs={songs.map((song: any) => ({
+                    ...song,
+                    href: `/${chapter.id}/track/${song.id}`,
+                }))}
+            />
+
+            <FullAlbumSection
+                title="Full Album"
+                text={chapter.fullAlbumText}
+                youtubeId={chapter.fullAlbumYoutubeId}
+                links={chapter.fullAlbumLinks}
+            />
+
+            <Footer />
+        </div>
+    </div>
+</Layout>
