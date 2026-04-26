@@ -9,51 +9,67 @@ import Footer from "../../../components/Footer.astro";
 // Daten importieren
 import { chapters } from "../../../data/chapters";
 import * as allAlbums from "../../../data/albums";
+import TrackNavigation from "../../../components/TrackNavigation.astro";
 
 export async function getStaticPaths() {
+  // ... dein getStaticPaths Code bleibt identisch ...
   const paths = [];
-
   for (const chapter of chapters) {
     const albumKey = `${chapter.id}Songs` as keyof typeof allAlbums;
     const songs = allAlbums[albumKey] || [];
-
-    for (const song of songs) {
+    for (let i = 0; i < songs.length; i++) {
       paths.push({
-        // WICHTIG: Die Keys müssen exakt deinen Datei-Platzhaltern entsprechen
-        params: { 
-            chapter: chapter.id, 
-            track: song.id  // Hier muss jetzt "track" stehen, weil die Datei [track].astro heißt
+        params: { chapter: chapter.id, track: songs[i].id },
+        props: {
+          chapter,
+          song: songs[i],
+          prevSong: songs[i - 1] || null,
+          nextSong: songs[i + 1] || null,
         },
-        props: { chapter, song },
       });
     }
   }
   return paths;
 }
 
-const { chapter, song } = Astro.props;
+const { chapter, song, prevSong, nextSong } = Astro.props;
+
+// --- HIER IST DIE LOGIK FÜR DIE NUMMERIERUNG ---
+const songs = allAlbums[
+  `${chapter.id}Songs` as keyof typeof allAlbums
+] as any[];
+const trackIndex = songs.findIndex((s) => s.id === song.id);
+const trackNumber = trackIndex + 1;
+const songTitle = song.title;
+const heroInfo = `Track ${trackNumber}`;
 ---
 
 <Layout title={`${song.title}`}>
-  <div
-    class="chapter-bg"
-    style={`--bg-image: url('${song.image}');`}
-  >
+  <div class="chapter-bg" style={`--bg-image: url('${song.image}');`}>
     <div class="chapter-content container">
       <Hero
         eyebrow={chapter.title}
-        title={song.title}
-        backHref={song.backHref}
+        title={songTitle}
+        heroInfo={heroInfo}
+        backHref={`/${chapter.id}`}
       />
 
-      <VisualizerSection title="Official Visualizer" youtubeId={song.youtubeId} />
-
+      <VisualizerSection
+        title="Official Visualizer"
+        youtubeId={song.youtubeId}
+      />
+      <ListenSection links={song.links} />
       <NotebookSection title="From Rusty’s notebook">
         <div class="narrative" set:html={song.notebookHtml} />
       </NotebookSection>
 
-      <ListenSection links={song.links} />
-      
+      <TrackNavigation
+        chapter={chapter}
+        prevSong={prevSong}
+        nextSong={nextSong}
+        allAlbums={allAlbums}
+      />
+
       <Footer />
     </div>
   </div>

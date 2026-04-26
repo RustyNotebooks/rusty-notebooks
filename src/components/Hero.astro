@@ -1,16 +1,20 @@
 ---
-const { eyebrow, title, backHref = null } = Astro.props;
+const { eyebrow, title, heroInfo = null, backHref = null } = Astro.props;
 ---
 
 <section class="hero">
-  {backHref ? (
-    <a href={backHref} class="eyebrow-pill">
-      <span class="eyebrow-pill-arrow">←</span>
-      <span class="eyebrow-pill-label">{eyebrow}</span>
-    </a>
-  ) : (
-    <div class="eyebrow">{eyebrow}</div>
-  )}
+  {
+    backHref ? (
+      <a href={backHref} class="eyebrow-pill">
+        <span class="eyebrow-pill-arrow">←</span>
+        <span class="eyebrow-pill-label">{eyebrow}</span>
+      </a>
+    ) : (
+      <div class="eyebrow">{eyebrow}</div>
+    )
+  }
+
+  {heroInfo && <div class="hero-info">{heroInfo}</div>}
 
   <h1>{title}</h1>
 </section>

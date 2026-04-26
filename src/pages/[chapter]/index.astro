@@ -21,7 +21,7 @@ const key = `${chapter.id}Songs` as keyof typeof allAlbums;
 const songs: any[] = (allAlbums[key] || []) as any[];
 ---
 
-<Layout title={`${chapter.titleLayout}`}>
+<Layout title={`${chapter.title}`}>
     <div
         class="chapter-bg"
         style={`--bg-image: url('${chapter.pageBackground}');`}
