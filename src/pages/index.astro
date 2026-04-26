@@ -5,6 +5,7 @@ import PlatformButton from "../components/PlatformButton.astro";
 import SideSheet from "../components/SideSheet.astro";
 import { upcomingItems } from "../data/upcoming";
 import Footer from "../components/Footer.astro";
+import { chapters } from "../data/chapters";
 ---
 
 <Layout title="Rusty Notebooks">
@@ -79,18 +80,15 @@ import Footer from "../components/Footer.astro";
 
       <ChapterListSection
         title="Chapters"
-        items={[
-          {
-            title: "Chapter 1 — Resonance of Rust",
-            text: "It is the first chapter in the quiet journey of Rusty Notebooks. Some say this is where the story begins. Others might say it’s where it finally ends.",
-            href: "/chapters/chapter1",
-            image: "/images/resonanceofrustcover.png",
-          },
-        ]}
+        items={chapters.map((chapter) => ({
+          title: `${chapter.titleLayout}: ${chapter.title}`,
+          text: chapter.text,
+          href: `/${chapter.id}`,
+          image: chapter.cover,
+        }))}
       />
 
-    <Footer />
-
+      <Footer />
     </div>
     <!-- chapter-content -->
   </div>
