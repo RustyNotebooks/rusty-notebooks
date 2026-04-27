@@ -23,7 +23,7 @@ const songs: any[] = (allAlbums[key] || []) as any[];
 ---
 
 <Layout title={`${chapter.title}`}>
-    <StickyHeader href="/" label="Rusty Notebooks" />
+    <StickyHeader href="/" label="Rusty Notebooks" scrollTitle={`${chapter.titleLayout} | ${chapter.title}`}/>
 
     <div
         class="chapter-bg"

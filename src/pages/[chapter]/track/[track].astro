@@ -46,13 +46,14 @@ const heroInfo = `Track ${trackNumber}`;
 ---
 
 <Layout title={`${song.title}`}>
-  <StickyHeader href={`/${chapter.id}`} label={chapter.title} />
+  <StickyHeader
+    href={`/${chapter.id}`}
+    label={chapter.title}
+    scrollTitle={`Track ${trackNumber} | ${song.title}`}
+  />
   <div class="chapter-bg" style={`--bg-image: url('${song.image}');`}>
     <div class="chapter-content container">
-      <Hero
-        title={songTitle}
-        heroInfo={heroInfo}
-      />
+      <Hero title={songTitle} heroInfo={heroInfo} />
 
       <VisualizerSection
         title="Official Visualizer"

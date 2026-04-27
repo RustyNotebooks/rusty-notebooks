@@ -1,12 +1,14 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Hero from "../../components/Hero.astro";
+import StickyHeader from "../../components/StickyHeader.astro";
 ---
 
 <Layout title="Imprint — Rusty Notebooks">
+    <StickyHeader href="/" label="Rusty Notebooks" scrollTitle="Imprint"/>
     <div class="chapter-bg" style="--bg-image: url('/images/index.png');">
         <div class="chapter-content container">
-            <Hero eyebrow="Return" title="Imprint" backHref={"/"} />
+            <Hero eyebrow="Return" title="Imprint" />
 
             <section class="section section-narrative">
                 <div class="narrative">
