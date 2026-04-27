@@ -44,12 +44,22 @@ const { title = "Rusty Notebooks" } = Astro.props;
       .container {
         max-width: 900px;
         margin: 0 auto;
-        padding: 100px 20px 0px; /* 100px ist der Standard für den Header */
+        padding: 100px 20px 0px;
       }
 
+      /* Dein bestehender Mobile-Fix (bleibt unberührt!) */
       @media (max-width: 768px) {
         .container {
-          padding-top: 80px; /* Hier ist der Puffer für Mobile */
+          padding-top: 80px;
+        }
+      }
+
+      /* 👇 NEU: Der Desktop-Fix, um den Hero an den Header heranzuziehen */
+      @media (min-width: 769px) {
+        .container {
+          /* Standard war 100px. Reduziere diesen Wert, bis es perfekt aussieht. 
+       Probier mal 120px, 100px oder sogar 80px */
+          padding-top: 60px;
         }
       }
 
@@ -440,6 +450,9 @@ const { title = "Rusty Notebooks" } = Astro.props;
         width: 100%;
         z-index: 40;
         transition: all 0.3s ease;
+        pointer-events: none;
+        backface-visibility: hidden;
+        transform: translateZ(0);
       }
 
       .header-container {
@@ -452,10 +465,23 @@ const { title = "Rusty Notebooks" } = Astro.props;
       .header-alignment-wrapper {
         max-width: 900px;
         margin: 0 auto;
-        padding: 0 20px; /* Gleiches Padding wie dein Inhalts-Container */
+        padding: 0 20px;
         height: 100%;
         display: flex;
-        align-items: center;
+        align-items: center; /* Mobile bleibt zentriert */
+        pointer-events: auto;
+      }
+
+      /* Desktop-Override */
+      @media (min-width: 768px) {
+        .header-alignment-wrapper {
+          align-items: flex-start; /* Jetzt klebt es oben */
+          padding-top: 30px; /* Hier den Abstand nach Wunsch feinjustieren */
+        }
+
+        .eyebrow-pill {
+          transform: translateY(0); /* Button Versatz entfernen */
+        }
       }
 
       /* --- MOBILE STYLE (Unverändert, passt ja!) --- */
@@ -463,12 +489,25 @@ const { title = "Rusty Notebooks" } = Astro.props;
         .sticky-header {
           height: 80px;
           padding-top: env(safe-area-inset-top);
-          background: rgba(17, 17, 17, 0.2);
-          backdrop-filter: blur(4px);
+
+          /* ÄNDERUNG HIER: Hintergrund erst transparent, wenn NICHT gescrollt */
+          background: transparent;
+          backdrop-filter: blur(0px);
+          transition:
+            background 0.3s ease,
+            backdrop-filter 0.3s ease;
         }
 
+        /* ÄNDERUNG HIER: Erst wenn die Klasse da ist, den Hintergrund und Blur aktivieren */
         .sticky-header.is-scrolled {
-          background: rgba(17, 17, 17, 0.95);
+          background: rgba(
+            17,
+            17,
+            17,
+            0.85
+          ); /* Etwas dunkler für bessere Lesbarkeit */
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
         }
       }
 
@@ -480,7 +519,7 @@ const { title = "Rusty Notebooks" } = Astro.props;
           transform: translateZ(0); /* Zwingt GPU-Beschleunigung dauerhaft */
 
           /* Hintergrund immer als rgba, wir ändern nur die Deckkraft */
-          background: rgba(17, 17, 17, 0.1);
+          background: rgba(17, 17, 17, 0);
 
           backdrop-filter: blur(0px);
           -webkit-backdrop-filter: blur(0px);
@@ -495,23 +534,61 @@ const { title = "Rusty Notebooks" } = Astro.props;
 
           transition:
             background 0.4s ease,
-            backdrop-filter 0.4s ease,
-            -webkit-mask-image 0.4s ease,
-            mask-image 0.4s ease;
+            backdrop-filter 0.4s ease;
+
+          -webkit-mask-image: linear-gradient(
+            to bottom,
+            black 80%,
+            transparent 100%
+          );
+          mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
         }
 
         .sticky-header.is-scrolled {
-          background: rgba(17, 17, 17, 0.6);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
+          background: rgba(17, 17, 17, 0.85);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
 
           /* Maske beim Scrollen auf den gewünschten Verlauf öffnen */
           -webkit-mask-image: linear-gradient(
             to bottom,
-            black 50%,
+            black 90%,
             transparent 100%
           );
-          mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+          mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        }
+      }
+
+      .header-stack {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0px; /* Abstand zwischen Button und Titel */
+      }
+
+      .sticky-scroll-title {
+        margin: -8px;
+        font-size: 1.1rem; /* Größer als der Button-Text */
+        font-family: Georgia, serif;
+        font-style: italic;
+        color: var(--muted); /* Gedecktes Grau statt knalliges Weiß */
+        opacity: 0;
+        padding-left: 12px;
+        transform: translateY(-5px); /* Kleiner Slide-Effekt */
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none; /* Blockiert nicht das Klicken auf den Header */
+      }
+
+      /* Wenn gescrollt wird */
+      .sticky-header.is-scrolled .sticky-scroll-title {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Header etwas höher machen, damit Platz ist */
+      @media (min-width: 768px) {
+        .sticky-header {
+          height: 120px; /* Mehr Platz für den zweizeiligen Header */
         }
       }
 

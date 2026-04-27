@@ -1,33 +1,37 @@
 ---
-const { href, label = "Rusty Notebooks" } = Astro.props;
+// Die neue prop "scrollTitle" ist optional
+const { href, label = "Rusty Notebooks", scrollTitle } = Astro.props;
 ---
 
 <header class="sticky-header">
   <div class="header-alignment-wrapper">
-    <a href={href} class="eyebrow-pill">
-      <span class="eyebrow-pill-arrow">←</span>
-      <span class="eyebrow-pill-label">{label}</span>
-    </a>
+    <div class="header-stack">
+      <a href={href} class="eyebrow-pill">
+        <span class="eyebrow-pill-arrow">←</span>
+        <span class="eyebrow-pill-label">{label}</span>
+      </a>
+      {scrollTitle && <h2 class="sticky-scroll-title">{scrollTitle}</h2>}
+    </div>
   </div>
 </header>
 
 <script is:inline>
   function updateHeader() {
-    const header = document.querySelector('.sticky-header');
+    const header = document.querySelector(".sticky-header");
     if (!header) return;
 
     if (window.scrollY > 30) {
-      header.classList.add('is-scrolled');
+      header.classList.add("is-scrolled");
     } else {
-      header.classList.remove('is-scrolled');
+      header.classList.remove("is-scrolled");
     }
   }
 
   // Astro-Event-Listener für Navigationen (mit View Transitions)
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener("astro:page-load", () => {
     updateHeader(); // Zustand beim Laden der Seite prüfen
-    
-    window.removeEventListener('scroll', updateHeader); // Saubermachen
-    window.addEventListener('scroll', updateHeader);    // Neu binden
+
+    window.removeEventListener("scroll", updateHeader); // Saubermachen
+    window.addEventListener("scroll", updateHeader); // Neu binden
   });
 </script>
