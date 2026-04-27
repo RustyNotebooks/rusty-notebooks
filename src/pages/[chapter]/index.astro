@@ -8,6 +8,7 @@ import { upcomingItems } from "../../data/upcoming";
 import * as allAlbums from "../../data/albums";
 import TrackListSection from "../../components/TrackListSection.astro";
 import FullAlbumSection from "../../components/FullAlbumSection.astro";
+import StickyHeader from "../../components/StickyHeader.astro";
 
 export function getStaticPaths() {
     return chapters.map((chapter) => ({
@@ -22,17 +23,14 @@ const songs: any[] = (allAlbums[key] || []) as any[];
 ---
 
 <Layout title={`${chapter.title}`}>
+    <StickyHeader href="/" label="Rusty Notebooks" />
+
     <div
         class="chapter-bg"
         style={`--bg-image: url('${chapter.pageBackground}');`}
     >
         <div class="chapter-content container">
-            <SideSheet title="Upcoming" items={upcomingItems} />
-            <Hero
-                eyebrow="Rusty Notebooks"
-                title={chapter.title}
-                backHref="/"
-            />
+            <Hero title={chapter.title} />
 
             <section class="section section-narrative">
                 <div class="narrative">
@@ -59,3 +57,4 @@ const songs: any[] = (allAlbums[key] || []) as any[];
         </div>
     </div>
 </Layout>
+

@@ -16,81 +16,84 @@ import { chapters } from "../data/chapters";
         <img src="/images/rusty-badge.png" alt="" class="hero-badge-right" />
         <div class="eyebrow">Americana Storytelling in Songs</div>
         <h1>Rusty Notebooks</h1>
-        <div class="narrative">
-          <p>
-            Rusty Notebooks is a long-form Americana story told in fragments,
-            songs, memories and moments from a life that didn’t unfold all at
-            once.
-          </p>
+        
+        <section class="section section-narrative">
+          <div class="narrative">
+            <p>
+              Rusty Notebooks is a long-form Americana story told in fragments,
+              songs, memories and moments from a life that didn’t unfold all at
+              once.
+            </p>
 
-          <p>
-            Set somewhere between leaving and staying,<br />
-            the music traces the quiet weight of time,<br />
-            the roads we outgrow,<br />
-            and the things we never quite say.
-          </p>
+            <p>
+              Set somewhere between leaving and staying,<br />
+              the music traces the quiet weight of time,<br />
+              the roads we outgrow,<br />
+              and the things we never quite say.
+            </p>
 
-          <p>
-            Each release reveals another piece of Rusty — not in order, but in
-            truth.
-          </p>
+            <p>
+              Each release reveals another piece of Rusty — not in order, but in
+              truth.
+            </p>
 
-          <p class="narrative-final">
-            Some stories don’t begin where you think.
-          </p>
+            <p class="narrative-final">
+              Some stories don’t begin where you think.
+            </p>
+          </div>
+        </section>
+
+        <div class="tag-row">
+          <PlatformButton
+            href="https://open.spotify.com/intl-de/artist/0jMtkiMsFVq3C0P3z7AgGh?si=jZQsAIhYT92yleGrw5T1mw"
+            label="Listen"
+            type="spotify"
+            variant="tag"
+          />
+
+          <PlatformButton
+            href="https://music.apple.com/us/artist/rusty-notebooks/1876510481"
+            label="Listen"
+            type="applemusic"
+            variant="tag"
+          />
+
+          <PlatformButton
+            href="https://www.youtube.com/@RustyNotebooks"
+            label="Watch"
+            type="youtube"
+            variant="tag"
+          />
+
+          <PlatformButton
+            href="https://www.instagram.com/rustynotebooks/"
+            label="Journal"
+            type="instagram"
+            variant="tag"
+          />
+
+          <PlatformButton
+            href="https://www.tiktok.com/@rusty.notebooks"
+            label="Moments"
+            type="tiktok"
+            variant="tag"
+          />
         </div>
+
+        <ChapterListSection
+          title="Chapters"
+          items={chapters.map((chapter) => ({
+            title: `${chapter.titleLayout}: ${chapter.title}`,
+            text: chapter.text,
+            href: `/${chapter.id}`,
+            image: chapter.cover,
+          }))}
+        />
+
+        <Footer />
       </section>
-
-      <div class="tag-row">
-        <PlatformButton
-          href="https://open.spotify.com/intl-de/artist/0jMtkiMsFVq3C0P3z7AgGh?si=jZQsAIhYT92yleGrw5T1mw"
-          label="Listen"
-          type="spotify"
-          variant="tag"
-        />
-
-        <PlatformButton
-          href="https://music.apple.com/us/artist/rusty-notebooks/1876510481"
-          label="Listen"
-          type="applemusic"
-          variant="tag"
-        />
-
-        <PlatformButton
-          href="https://www.youtube.com/@RustyNotebooks"
-          label="Watch"
-          type="youtube"
-          variant="tag"
-        />
-
-        <PlatformButton
-          href="https://www.instagram.com/rustynotebooks/"
-          label="Journal"
-          type="instagram"
-          variant="tag"
-        />
-
-        <PlatformButton
-          href="https://www.tiktok.com/@rusty.notebooks"
-          label="Moments"
-          type="tiktok"
-          variant="tag"
-        />
-      </div>
-
-      <ChapterListSection
-        title="Chapters"
-        items={chapters.map((chapter) => ({
-          title: `${chapter.titleLayout}: ${chapter.title}`,
-          text: chapter.text,
-          href: `/${chapter.id}`,
-          image: chapter.cover,
-        }))}
-      />
-
-      <Footer />
+      <!-- chapter-content -->
     </div>
-    <!-- chapter-content -->
+    <!-- chapter-bg -->
   </div>
-  <!-- chapter-bg -->
 </Layout>
