@@ -10,6 +10,7 @@ import Footer from "../../../components/Footer.astro";
 import { chapters } from "../../../data/chapters";
 import * as allAlbums from "../../../data/albums";
 import TrackNavigation from "../../../components/TrackNavigation.astro";
+import StickyHeader from "../../../components/StickyHeader.astro";
 
 export async function getStaticPaths() {
   // ... dein getStaticPaths Code bleibt identisch ...
@@ -45,13 +46,12 @@ const heroInfo = `Track ${trackNumber}`;
 ---
 
 <Layout title={`${song.title}`}>
+  <StickyHeader href={`/${chapter.id}`} label={chapter.title} />
   <div class="chapter-bg" style={`--bg-image: url('${song.image}');`}>
     <div class="chapter-content container">
       <Hero
-        eyebrow={chapter.title}
         title={songTitle}
         heroInfo={heroInfo}
-        backHref={`/${chapter.id}`}
       />
 
       <VisualizerSection

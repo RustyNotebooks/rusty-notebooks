@@ -44,7 +44,13 @@ const { title = "Rusty Notebooks" } = Astro.props;
       .container {
         max-width: 900px;
         margin: 0 auto;
-        padding: 48px 20px 0px;
+        padding: 100px 20px 0px; /* 100px ist der Standard für den Header */
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding-top: 80px; /* Hier ist der Puffer für Mobile */
+        }
       }
 
       .eyebrow {
@@ -424,6 +430,103 @@ const { title = "Rusty Notebooks" } = Astro.props;
         flex-wrap: wrap;
         gap: 10px;
         margin-top: 24px;
+      }
+
+      /* StickyHeader */
+      .sticky-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 40;
+        transition: all 0.3s ease;
+      }
+
+      .header-container {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 0 20px;
+      }
+
+      .header-alignment-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 20px; /* Gleiches Padding wie dein Inhalts-Container */
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      /* --- MOBILE STYLE (Unverändert, passt ja!) --- */
+      @media (max-width: 767px) {
+        .sticky-header {
+          height: 80px;
+          padding-top: env(safe-area-inset-top);
+          background: rgba(17, 17, 17, 0.2);
+          backdrop-filter: blur(4px);
+        }
+
+        .sticky-header.is-scrolled {
+          background: rgba(17, 17, 17, 0.95);
+        }
+      }
+
+      /* --- DESKTOP STYLE (Smooth Blur Fix) --- */
+      @media (min-width: 768px) {
+        .sticky-header {
+          height: 140px;
+          will-change: backdrop-filter, background, mask-image;
+          transform: translateZ(0); /* Zwingt GPU-Beschleunigung dauerhaft */
+
+          /* Hintergrund immer als rgba, wir ändern nur die Deckkraft */
+          background: rgba(17, 17, 17, 0.1);
+
+          backdrop-filter: blur(0px);
+          -webkit-backdrop-filter: blur(0px);
+
+          /* Maske immer definiert, aber initial voll deckend */
+          -webkit-mask-image: linear-gradient(
+            to bottom,
+            black 100%,
+            transparent 100%
+          );
+          mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+
+          transition:
+            background 0.4s ease,
+            backdrop-filter 0.4s ease,
+            -webkit-mask-image 0.4s ease,
+            mask-image 0.4s ease;
+        }
+
+        .sticky-header.is-scrolled {
+          background: rgba(17, 17, 17, 0.6);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+
+          /* Maske beim Scrollen auf den gewünschten Verlauf öffnen */
+          -webkit-mask-image: linear-gradient(
+            to bottom,
+            black 50%,
+            transparent 100%
+          );
+          mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        }
+      }
+
+      /* Button ist jetzt immer sichtbar */
+      .eyebrow-pill {
+        margin-bottom: 0;
+        transform: translateY(-14px);
+        opacity: 1; /* Immer voll da */
+      }
+
+      .header-container {
+        display: flex;
+        align-items: center;
+        height: 90px;
+        padding: 0 20px;
       }
 
       /* VisualizerSection */
